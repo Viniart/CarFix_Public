@@ -10,10 +10,10 @@ namespace CarFix.Project.Domains
         public Entity()
         {
             Id = Guid.NewGuid();
-            DataCriacao = DateTime.Now;
+            CreationDate = DateTime.Now;
         }
 
         public Guid Id { get; set; }
-        public DateTime DataCriacao { get; set; }
+        public DateTime CreationDate { get; set; }
     }
 }

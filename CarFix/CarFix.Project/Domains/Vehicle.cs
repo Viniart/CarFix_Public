@@ -1,4 +1,4 @@
-﻿]using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,25 +7,26 @@ namespace CarFix.Project.Domains
 {
     public class Vehicle : Entity
     {
-        public Vehicle(string placa, string nomeModelo, string marca, int ano, string cor, int userId)
+        public Vehicle(string licensePlate, string modelName, string brandName, int year, string color, string vehicleImage, Guid userId)
         {
-            Placa = placa;
-            NomeModelo = nomeModelo;
-            Marca = marca;
-            Ano = ano;
-            Cor = cor;
-            UserId = userId;
+            LicensePlate = licensePlate;
+            ModelName = modelName;
+            BrandName = brandName;
+            Year = year;
+            Color = color;
+            VehicleImage = vehicleImage;
+            IdUser = userId;
         }
 
-        public string Placa { get; private set; }
-        public string NomeModelo { get; private set; }
-        public string Marca { get; private set; }
-        public int Ano { get; private set; }
-        public string Cor { get; private set; }
-        public string ImagemVeiculo { get; private set; }
+        public string LicensePlate { get; private set; }
+        public string ModelName { get; private set; }
+        public string BrandName { get; private set; }
+        public int Year { get; private set; }
+        public string Color { get; private set; }
+        public string VehicleImage { get; private set; }
 
         // Compositions
-        public int UserId { get; private set; }
+        public Guid IdUser { get; private set; }
         public virtual User User { get; private set; }
     }
 }
