@@ -28,5 +28,7 @@ namespace CarFix.Project.Domains
         // Compositions
         public Guid IdUser { get; private set; }
         public virtual User User { get; private set; }
+
+        public virtual Budget Budget { get; private set; }
     }
 }

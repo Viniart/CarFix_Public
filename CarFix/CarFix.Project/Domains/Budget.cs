@@ -7,7 +7,7 @@ namespace CarFix.Project.Domains
 {
     public class Budget : Entity
     {
-        public Budget(double totalValue, DateTime timeEstimate, DateTime visitDate, DateTime finalizationDate, Guid vehicleId)
+        public Budget(double totalValue, int timeEstimate, DateTime visitDate, DateTime finalizationDate, Guid vehicleId)
         {
             TotalValue = totalValue;
             TimeEstimate = timeEstimate;
@@ -17,7 +17,7 @@ namespace CarFix.Project.Domains
         }
 
         public double TotalValue { get; private set; }
-        public DateTime TimeEstimate { get; private set; }
+        public int TimeEstimate { get; private set; }
         public DateTime VisitDate { get; private set;  }
         public DateTime FinalizationDate { get; private set;  }
 

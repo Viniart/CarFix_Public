@@ -22,5 +22,7 @@ namespace CarFix.Project.Domains
         public string Password { get; private set; }
         public EnUserType UserType { get; private set; }
         public string PhoneNumber { get; private set; }
+
+        public ICollection<Vehicle> Vehicles { get; set; }
     }
 }
