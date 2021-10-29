@@ -7,13 +7,13 @@ namespace CarFix.Project.Domains
 {
     public class Budget : Entity
     {
-        public Budget(double totalValue, int timeEstimate, DateTime visitDate, DateTime finalizationDate, Guid vehicleId)
+        public Budget(double totalValue, int timeEstimate, DateTime visitDate, DateTime finalizationDate, Guid idVehicle)
         {
             TotalValue = totalValue;
             TimeEstimate = timeEstimate;
             VisitDate = visitDate;
             FinalizationDate = finalizationDate;
-            IdVehicle = vehicleId;
+            IdVehicle = idVehicle;
         }
 
         public double TotalValue { get; private set; }
@@ -24,5 +24,7 @@ namespace CarFix.Project.Domains
         // Compositions
         public Guid IdVehicle { get; private set; }
         public virtual Vehicle Vehicle { get; private set; }
+        public virtual Service Service { get; private set; }
+
     }
 }

@@ -13,5 +13,7 @@ namespace CarFix.Project.Domains
         }
 
         public string TypeName { get; private set; }
+
+        public ICollection<Service> Services { get; set; }
     }
 }

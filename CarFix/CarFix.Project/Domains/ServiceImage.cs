@@ -7,16 +7,17 @@ namespace CarFix.Project.Domains
 {
     public class ServiceImage : Entity
     {
-        public ServiceImage(string imagePath, Guid serviceId)
+        public ServiceImage(string imagePath, Guid idService)
         {
             ImagePath = imagePath;
-            IdService = serviceId;
+            IdService = idService;
         }
 
         public string ImagePath { get; private set; }
 
         // Composition
         public Guid IdService { get; private set; }
+        public virtual Service Service { get; private set; }
 
 
     }

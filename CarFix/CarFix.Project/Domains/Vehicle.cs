@@ -7,7 +7,7 @@ namespace CarFix.Project.Domains
 {
     public class Vehicle : Entity
     {
-        public Vehicle(string licensePlate, string modelName, string brandName, int year, string color, string vehicleImage, Guid userId)
+        public Vehicle(string licensePlate, string modelName, string brandName, int year, string color, string vehicleImage, Guid idUser)
         {
             LicensePlate = licensePlate;
             ModelName = modelName;
@@ -15,7 +15,7 @@ namespace CarFix.Project.Domains
             Year = year;
             Color = color;
             VehicleImage = vehicleImage;
-            IdUser = userId;
+            IdUser = idUser;
         }
 
         public string LicensePlate { get; private set; }

@@ -9,7 +9,7 @@ namespace CarFix.Project.Interfaces
     interface IServiceImageRepository
     {
         List<ServiceImage> ListAllImages();
-        ServiceImage FindServiceImage(int idServiceImage);
+        ServiceImage FindServiceImage(Guid idServiceImage);
         void Register(ServiceImage newServiceImage);
         void Update(Guid idServiceImage, ServiceImage updatedServiceImage);
         void Delete(Guid idServiceImage);

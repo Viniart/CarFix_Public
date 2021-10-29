@@ -50,13 +50,11 @@ namespace CarFix.Project.Contexts
             modelBuilder.Entity<User>().Property(x => x.UserType).HasColumnType("varchar(20)");
             modelBuilder.Entity<User>().Property(x => x.UserType).IsRequired();
 
-            
-
             modelBuilder.Entity<User>().Property(x => x.CreationDate).HasColumnType("DateTime");
             #endregion
 
             #region Vehicles
-            modelBuilder.Entity<Vehicle>().ToTable("Vehicles");/ 
+            modelBuilder.Entity<Vehicle>().ToTable("Vehicles");
 
             modelBuilder.Entity<Vehicle>().Property(x => x.Id);
 
@@ -102,7 +100,7 @@ namespace CarFix.Project.Contexts
 
             modelBuilder.Entity<Budget>().Property(x => x.FinalizationDate).HasColumnType("datetime");
 
-            modelBuilder.Entity<Budget>().Property(x => x.CreationDate).HasColumnType("DateTime");
+            modelBuilder.Entity<Budget>().Property(x => x.CreationDate).HasColumnType("datetime");
 
             modelBuilder.Entity<Budget>()
                 .HasOne<Vehicle>(u => u.Vehicle)
@@ -112,46 +110,69 @@ namespace CarFix.Project.Contexts
             #endregion
 
             #region ServiceTypes
-            modelBuilder.Entity<Budget>().ToTable("ServiceTypes");
+            modelBuilder.Entity<ServiceType>().ToTable("ServiceTypes");
 
-            modelBuilder.Entity<Budget>().Property(x => x.Id);
+            modelBuilder.Entity<ServiceType>().Property(x => x.Id);
 
-            modelBuilder.Entity<Budget>().Property(x => x.TotalValue).HasColumnType("decimal(18,2)");
+            modelBuilder.Entity<ServiceType>().Property(x => x.TypeName).HasMaxLength(50);
+            modelBuilder.Entity<ServiceType>().Property(x => x.TypeName).HasColumnType("varchar(50)");
+            modelBuilder.Entity<ServiceType>().Property(x => x.TypeName).IsRequired();
 
-            modelBuilder.Entity<Budget>().Property(x => x.TimeEstimate).HasColumnType("int");
-
-            modelBuilder.Entity<Budget>().Property(x => x.VisitDate).HasColumnType("datetime");
-
-            modelBuilder.Entity<Budget>().Property(x => x.FinalizationDate).HasColumnType("datetime");
-
-            modelBuilder.Entity<Budget>().Property(x => x.CreationDate).HasColumnType("DateTime");
-
-            modelBuilder.Entity<Budget>()
-                .HasOne<Vehicle>(u => u.Vehicle)
-                .WithOne(b => b.Budget)
-                .HasForeignKey<Budget>(f => f.IdVehicle);
+            modelBuilder.Entity<ServiceType>().Property(x => x.CreationDate).HasColumnType("datetime");
 
             #endregion
 
             #region Services
-            modelBuilder.Entity<Budget>().ToTable("Services");
+            modelBuilder.Entity<Service>().ToTable("Services");
 
-            modelBuilder.Entity<Budget>().Property(x => x.Id);
+            modelBuilder.Entity<Service>().Property(x => x.Id);
 
-            modelBuilder.Entity<Budget>().Property(x => x.TotalValue).HasColumnType("decimal(18,2)");
+            modelBuilder.Entity<Service>().Property(x => x.ServiceDescription).HasMaxLength(50);
+            modelBuilder.Entity<Service>().Property(x => x.ServiceDescription).HasColumnType("varchar(50)");
 
-            modelBuilder.Entity<Budget>().Property(x => x.TimeEstimate).HasColumnType("int");
+            modelBuilder.Entity<Service>().Property(x => x.Price).HasColumnType("decimal(18,2)");
 
-            modelBuilder.Entity<Budget>().Property(x => x.VisitDate).HasColumnType("datetime");
+            modelBuilder.Entity<Service>().Property(x => x.Observations).HasMaxLength(200);
+            modelBuilder.Entity<Service>().Property(x => x.Observations).HasColumnType("varchar(200)");
 
-            modelBuilder.Entity<Budget>().Property(x => x.FinalizationDate).HasColumnType("datetime");
+            modelBuilder.Entity<Service>().Property(x => x.ServiceStatus).HasMaxLength(20);
+            modelBuilder.Entity<Service>().Property(x => x.ServiceStatus).HasColumnType("varchar(20)");
 
-            modelBuilder.Entity<Budget>().Property(x => x.CreationDate).HasColumnType("DateTime");
+            modelBuilder.Entity<Service>().Property(x => x.CreationDate).HasColumnType("datetime");
 
-            modelBuilder.Entity<Budget>()
-                .HasOne<Vehicle>(u => u.Vehicle)
-                .WithOne(b => b.Budget)
-                .HasForeignKey<Budget>(f => f.IdVehicle);
+            modelBuilder.Entity<Service>()
+                .HasOne<ServiceType>(u => u.ServiceType)
+                .WithMany(b => b.Services)
+                .HasForeignKey(f => f.IdServiceType);
+
+            modelBuilder.Entity<Service>()
+                .HasOne<Budget>(u => u.Budget)
+                .WithOne(b => b.Service)
+                .HasForeignKey<Service>(f => f.IdBudget);
+
+            modelBuilder.Entity<Service>()
+                .HasOne<User>(u => u.Worker)
+                .WithMany(b => b.Services)
+                .OnDelete(DeleteBehavior.NoAction)
+                .HasForeignKey(f => f.IdUser);
+
+            #endregion
+
+            #region ServiceImages
+            modelBuilder.Entity<ServiceImage>().ToTable("ServiceImages");
+
+            modelBuilder.Entity<ServiceImage>().Property(x => x.Id);
+
+            modelBuilder.Entity<ServiceImage>().Property(x => x.ImagePath).HasMaxLength(50);
+            modelBuilder.Entity<ServiceImage>().Property(x => x.ImagePath).HasColumnType("varchar(50)");
+            modelBuilder.Entity<ServiceImage>().Property(x => x.ImagePath).IsRequired();
+
+            modelBuilder.Entity<ServiceImage>().Property(x => x.CreationDate).HasColumnType("datetime");
+
+            modelBuilder.Entity<ServiceImage>()
+                .HasOne<Service>(u => u.Service)
+                .WithMany(b => b.ServiceImages)
+                .HasForeignKey(f => f.IdService);
 
             #endregion
 
