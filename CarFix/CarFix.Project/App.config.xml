@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<connectionStrings>
+		<add name="LocalConnectionString" connectionString="Data Source = DEV22\\SQLEXPRESS Initial Catalog=CarFixLocal;Integrated Security=True" />
+	</connectionStrings>
+</configuration>
