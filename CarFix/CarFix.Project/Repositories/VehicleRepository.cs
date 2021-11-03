@@ -1,42 +1,59 @@
-﻿using CarFix.Project.Domains;
+﻿using CarFix.Project.Contexts;
+using CarFix.Project.Domains;
 using CarFix.Project.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarFix.Project.Repositories
 {
     public class VehicleRepository : IVehicleRepository
     {
-        public void Delete(Guid idUser)
+        private readonly CarFixContext c_Context;
+
+        public VehicleRepository(CarFixContext _context)
         {
-            throw new NotImplementedException();
+            c_Context = _context;
+        }
+        public void Delete(Guid idVehicle)
+        {
+            Vehicle selectedVehicle = c_Context.Vehicles.Find(idVehicle);
+
+            c_Context.Vehicles.Remove(selectedVehicle);
+
+            c_Context.SaveChanges();
         }
 
         public Vehicle FindVehicle(Guid idVehicle)
         {
-            throw new NotImplementedException();
+            return c_Context.Vehicles.FirstOrDefault(x => x.Id == idVehicle);
         }
 
         public List<Vehicle> ListAllVehicles()
         {
-            throw new NotImplementedException();
+            return c_Context.Vehicles
+                .AsNoTracking()
+                .Include(x => x.User)
+                .ToList();
         }
 
-        public List<Vehicle> ListVehiclesPerLicensePlate(string licensePlate)
+        public Vehicle FindVehiclePerLicensePlate(string licensePlate)
         {
-            throw new NotImplementedException();
+            return c_Context.Vehicles.FirstOrDefault(x => x.LicensePlate == licensePlate);
         }
 
         public void Register(Vehicle newVehicle)
         {
-            throw new NotImplementedException();
+            c_Context.Vehicles.Add(newVehicle);
+            c_Context.SaveChanges();
         }
 
-        public void Update(Guid idUser, Vehicle updatedVehicle)
+        public void Update(Vehicle vehicle)
         {
-            throw new NotImplementedException();
+            c_Context.Entry(vehicle).State = EntityState.Modified;
+            c_Context.SaveChanges();
         }
     }
 }

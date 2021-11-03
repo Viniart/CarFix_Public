@@ -16,15 +16,15 @@ namespace CarFix.Project.Domains
             IdVehicle = idVehicle;
         }
 
-        public double TotalValue { get; private set; }
-        public int TimeEstimate { get; private set; }
-        public DateTime VisitDate { get; private set;  }
-        public DateTime FinalizationDate { get; private set;  }
+        public double? TotalValue { get; private set; }
+        public int? TimeEstimate { get; private set; }
+        public DateTime? VisitDate { get; private set;  }
+        public DateTime? FinalizationDate { get; private set;  }
 
         // Compositions
-        public Guid IdVehicle { get; private set; }
-        public virtual Vehicle Vehicle { get; private set; }
-        public virtual Service Service { get; private set; }
+        public Guid? IdVehicle { get; private set; }
+        public virtual Vehicle? Vehicle { get; private set; }
+        public virtual Service? Service { get; private set; }
 
     }
 }

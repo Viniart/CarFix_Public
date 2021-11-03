@@ -5,37 +5,60 @@ using System.Threading.Tasks;
 using CarFix.Project.Contexts;
 using CarFix.Project.Domains;
 using CarFix.Project.Interfaces;
+using CarFix.Project.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarFix.Project.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private CarFixContext c_Context = null;
-        DbSet<User> c_DbSet;
+        private readonly CarFixContext c_Context;
+
+        public UserRepository(CarFixContext _context)
+        {
+            c_Context = _context;
+        }
+
         public void Delete(Guid idUser)
         {
-            throw new NotImplementedException();
+            User selectedUser = c_Context.Users.Find(idUser);
+
+            c_Context.Users.Remove(selectedUser);
+
+            c_Context.SaveChanges();
         }
 
         public User FindUser(Guid idUser)
         {
-            throw new NotImplementedException();
+            return c_Context.Users.FirstOrDefault(x => x.Id == idUser);
+        }
+
+        public User FindUserPerEmail(string email)
+        {
+            return c_Context.Users.FirstOrDefault(x => x.Email.ToLower() == email.ToLower());
         }
 
         public List<User> ListAllUsers()
         {
-            throw new NotImplementedException();
+            return c_Context.Users
+                .AsNoTracking()
+                .Include(x => x.Vehicles)
+                .Include(x => x.Services)
+                .OrderBy(x => x.CreationDate)
+                .ToList();
         }
 
         public void Register(User newUser)
         {
-            throw new NotImplementedException();
+            newUser.Password = Password.Encrypt(newUser.Password);
+            c_Context.Users.Add(newUser);
+            c_Context.SaveChanges();
         }
 
-        public void Update(Guid idUser, User updatedUser)
+        public void Update(User user)
         {
-            throw new NotImplementedException();
+            c_Context.Entry(user).State = EntityState.Modified;
+            c_Context.SaveChanges();
         }
     }
 }

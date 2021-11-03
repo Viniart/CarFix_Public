@@ -19,11 +19,11 @@ namespace CarFix.Project.Domains
 
         public string Username { get; private set; }
         public string Email { get; private set; }
-        public string Password { get; private set; }
+        public string Password { get; set; }
         public EnUserType UserType { get; private set; }
         public string PhoneNumber { get; private set; }
 
-        public ICollection<Vehicle> Vehicles { get; private set; }
-        public ICollection<Service> Services { get; private set; }
+        public ICollection<Vehicle>? Vehicles { get; private set; }
+        public ICollection<Service>? Services { get; private set; }
     }
 }

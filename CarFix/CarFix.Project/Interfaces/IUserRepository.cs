@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace CarFix.Project.Interfaces
 {
-    public interface IUserRespository
+    public interface IUserRepository
     {
         List<User> ListAllUsers();
         User FindUser(Guid idUser);
+        User FindUserPerEmail(string email);
         // User FindWorkers(EnUserType userType);
         void Register(User newUser);
-        void Update(Guid idUser, User updatedUser);
+        void Update(User user);
         void Delete(Guid idUser);
     }
 }

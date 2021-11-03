@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "66DXgbi5UYAbvNG+F/Y+HsCkrxqqBrntU7VK0PZCd14sKtJ5iGyGe9zER+Kw9mDPwsMNCxH+2RofWZSZy5YvvQ==",
+  "dgSpecHash": "KD/aWYqlSSNuMoW69FLRcxxnPE4TQPgKO6LfLNo/o8kvv0XgqmLJltTGwJqd5w24gFgnkLKakBLvyfsNchXDSg==",
   "success": true,
   "projectFilePath": "C:\\Users\\37529671880\\source\\repos\\CarFix\\CarFix.Project\\CarFix.Project.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\37529671880\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\37529671880\\.nuget\\packages\\flunt\\2.0.5\\flunt.2.0.5.nupkg.sha512",
     "C:\\Users\\37529671880\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\37529671880\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.11\\microsoft.aspnetcore.authentication.jwtbearer.5.0.11.nupkg.sha512",

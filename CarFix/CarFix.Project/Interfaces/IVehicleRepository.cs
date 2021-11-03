@@ -9,10 +9,10 @@ namespace CarFix.Project.Interfaces
     public interface IVehicleRepository
     {
         List<Vehicle> ListAllVehicles();
-        List<Vehicle> ListVehiclesPerLicensePlate(string licensePlate);
+        Vehicle FindVehiclePerLicensePlate(string licensePlate);
         Vehicle FindVehicle(Guid idVehicle);
         void Register(Vehicle newVehicle);
-        void Update(Guid idUser, Vehicle updatedVehicle);
+        void Update(Vehicle vehicle);
         void Delete(Guid idUser);
     }
 }

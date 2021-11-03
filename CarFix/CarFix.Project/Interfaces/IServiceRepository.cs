@@ -9,7 +9,7 @@ namespace CarFix.Project.Interfaces
     interface IServiceRepository
     {
         List<Service> ListAllServices();
-        Service FindService(int idService);
+        Service FindService(Guid idService);
         void AnswerService(Guid idService, double price, string observations);
         void Register(Service newService);
         void Update(Guid idService, Service updatedService);
