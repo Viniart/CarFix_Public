@@ -58,3 +58,10 @@ C:\Users\37529671880\source\repos\CarFix\CarFix.Project\obj\Debug\net5.0\CarFix.
 C:\Users\37529671880\source\repos\CarFix\CarFix.Project\obj\Debug\net5.0\CarFix.Project.genruntimeconfig.cache
 C:\Users\37529671880\source\repos\CarFix\CarFix.Project\bin\Debug\net5.0\Microsoft.OpenApi.dll
 C:\Users\37529671880\source\repos\CarFix\CarFix.Project\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\37529671880\source\repos\CarFix\CarFix.Project\bin\Debug\net5.0\BCrypt.Net-Core.dll
+C:\Users\37529671880\source\repos\CarFix\CarFix.Project\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\37529671880\source\repos\CarFix\CarFix.Project\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\37529671880\source\repos\CarFix\CarFix.Project\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll
+C:\Users\37529671880\source\repos\CarFix\CarFix.Project\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\37529671880\source\repos\CarFix\CarFix.Project\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\37529671880\source\repos\CarFix\CarFix.Project\obj\Debug\net5.0\CarFix.Project.MvcApplicationPartsAssemblyInfo.cs

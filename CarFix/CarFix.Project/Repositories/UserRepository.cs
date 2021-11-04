@@ -35,7 +35,14 @@ namespace CarFix.Project.Repositories
 
         public User FindUserPerEmail(string email)
         {
-            return c_Context.Users.FirstOrDefault(x => x.Email.ToLower() == email.ToLower());
+            User userLogin = c_Context.Users.FirstOrDefault(x => x.Email.ToLower() == email.ToLower());
+
+            if(userLogin.Email != null)
+            {
+                return userLogin;
+            }
+
+            return null;
         }
 
         public List<User> ListAllUsers()

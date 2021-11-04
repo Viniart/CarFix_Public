@@ -14,9 +14,9 @@ namespace CarFix.Project.UnitOfWork
         private UserRepository _userRepository;
         private VehicleRepository _vehicleRepository;
 
-        public UnitOfWork(CarFixContext _context)
+        public UnitOfWork(CarFixContext context)
         {
-            c_Context = _context;
+            c_Context = context;
         }
 
         public void Save()

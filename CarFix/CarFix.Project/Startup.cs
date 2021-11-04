@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -23,10 +24,16 @@ namespace CarFix.Project
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            var connectionString = ConfigurationManager.ConnectionStrings["LocalConnectionString"].ConnectionString;
-            services.AddDbContext<CarFixContext>(options => options.UseSqlServer(connectionString));
+            //var connectionString = ConfigurationManager.ConnectionStrings["LocalConnectionString"].ConnectionString;
+            services.AddDbContext<CarFixContext>(options => options.UseSqlServer("Data Source = dev22\\sqlexpress; Initial Catalog=CarFixLocal;Integrated Security=True"));
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson(options => 
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+
+                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
+                });
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(options =>
@@ -52,6 +59,15 @@ namespace CarFix.Project
                     );
             });
 
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { 
+                    Title = "CarFix.webApi",
+                    Version = "v1",
+                    Description = "API do Projeto CarFix feito em conjunto com a DAREDE"
+                });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -61,6 +77,13 @@ namespace CarFix.Project
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c => {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseRouting();
 

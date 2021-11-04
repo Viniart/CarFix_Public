@@ -8,32 +8,21 @@ namespace CarFix.Project.Domains
 {
     public class Service : Entity
     {
-        public Service(string serviceDescription, double price, string observations, EnServiceStatus serviceStatus, Guid idUser ,Guid idServiceType, Guid idBudget)
-        {
-            ServiceDescription = serviceDescription;
-            Price = price;
-            Observations = observations;
-            IdUser = idUser;
-            IdServiceType = idServiceType;
-            IdBudget = idBudget;
-            ServiceStatus = serviceStatus;
-        }
-
-        public string ServiceDescription { get; private set; }
-        public double? Price { get; private set; }
-        public string? Observations { get; private set; }
-        public EnServiceStatus? ServiceStatus { get; private set; }
+        public string ServiceDescription { get; set; }
+        public double? Price { get; set; }
+        public string? Observations { get; set; }
+        public EnServiceStatus? ServiceStatus { get; set; }
 
         // Compositions
-        public Guid? IdUser { get; private set; }
-        public virtual User? Worker { get; private set; }
+        public Guid IdUser { get; set; }
+        public virtual User? Worker { get; set; }
         
-        public Guid? IdServiceType { get; private set; }
-        public virtual ServiceType? ServiceType { get; private set; }
+        public Guid? IdServiceType { get; set; }
+        public virtual ServiceType? ServiceType { get; set; }
 
-        public Guid? IdBudget { get; private set; }
-        public virtual Budget? Budget { get; private set; }
+        public Guid IdBudget { get; set; }
+        public virtual Budget? Budget { get; set; }
 
-        public ICollection<ServiceImage>? ServiceImages { get; private set; }
+        public ICollection<ServiceImage>? ServiceImages { get; set; }
     }
 }

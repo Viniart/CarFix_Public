@@ -8,22 +8,13 @@ namespace CarFix.Project.Domains
 {
     public class User : Entity
     {
-        public User(string username, string email, string password, EnUserType userType, string phoneNumber)
-        {
-            Username = username;
-            Email = email;
-            Password = password;
-            UserType = userType;
-            PhoneNumber = phoneNumber;
-        }
-
-        public string Username { get; private set; }
-        public string Email { get; private set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
-        public EnUserType UserType { get; private set; }
-        public string PhoneNumber { get; private set; }
+        public EnUserType UserType { get; set; }
+        public string PhoneNumber { get; set; }
 
-        public ICollection<Vehicle>? Vehicles { get; private set; }
-        public ICollection<Service>? Services { get; private set; }
+        public ICollection<Vehicle>? Vehicles { get; set; }
+        public ICollection<Service>? Services { get; set; }
     }
 }

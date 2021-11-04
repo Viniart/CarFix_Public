@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarFix.Project.Migrations
 {
     [DbContext(typeof(CarFixContext))]
-    [Migration("20211029192109_Teste Inicial")]
-    partial class TesteInicial
+    [Migration("20211104173816_Teste Senai")]
+    partial class TesteSenai
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,19 +30,19 @@ namespace CarFix.Project.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime");
 
-                    b.Property<DateTime>("FinalizationDate")
+                    b.Property<DateTime?>("FinalizationDate")
                         .HasColumnType("datetime");
 
                     b.Property<Guid>("IdVehicle")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("TimeEstimate")
+                    b.Property<int?>("TimeEstimate")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("TotalValue")
+                    b.Property<decimal?>("TotalValue")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime>("VisitDate")
+                    b.Property<DateTime?>("VisitDate")
                         .HasColumnType("datetime");
 
                     b.HasKey("Id");
@@ -65,7 +65,7 @@ namespace CarFix.Project.Migrations
                     b.Property<Guid>("IdBudget")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdServiceType")
+                    b.Property<Guid?>("IdServiceType")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("IdUser")
@@ -75,15 +75,15 @@ namespace CarFix.Project.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
 
-                    b.Property<decimal>("Price")
+                    b.Property<decimal?>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ServiceDescription")
+                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("ServiceStatus")
-                        .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("varchar(20)");
 
@@ -200,7 +200,7 @@ namespace CarFix.Project.Migrations
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("IdUser")
+                    b.Property<Guid?>("IdUser")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("LicensePlate")
@@ -248,14 +248,12 @@ namespace CarFix.Project.Migrations
 
                     b.HasOne("CarFix.Project.Domains.ServiceType", "ServiceType")
                         .WithMany("Services")
-                        .HasForeignKey("IdServiceType")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdServiceType");
 
                     b.HasOne("CarFix.Project.Domains.User", "Worker")
                         .WithMany("Services")
                         .HasForeignKey("IdUser")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Budget");
@@ -280,9 +278,7 @@ namespace CarFix.Project.Migrations
                 {
                     b.HasOne("CarFix.Project.Domains.User", "User")
                         .WithMany("Vehicles")
-                        .HasForeignKey("IdUser")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IdUser");
 
                     b.Navigation("User");
                 });

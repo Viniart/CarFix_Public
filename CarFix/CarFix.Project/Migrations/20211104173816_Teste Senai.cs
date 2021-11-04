@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarFix.Project.Migrations
 {
-    public partial class TesteInicial : Migration
+    public partial class TesteSenai : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,7 +48,7 @@ namespace CarFix.Project.Migrations
                     Year = table.Column<int>(type: "int", nullable: false),
                     Color = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
                     VehicleImage = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: true),
-                    IdUser = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdUser = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -59,7 +59,7 @@ namespace CarFix.Project.Migrations
                         column: x => x.IdUser,
                         principalTable: "Users",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -67,10 +67,10 @@ namespace CarFix.Project.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TotalValue = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    TimeEstimate = table.Column<int>(type: "int", nullable: false),
-                    VisitDate = table.Column<DateTime>(type: "datetime", nullable: false),
-                    FinalizationDate = table.Column<DateTime>(type: "datetime", nullable: false),
+                    TotalValue = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    TimeEstimate = table.Column<int>(type: "int", nullable: true),
+                    VisitDate = table.Column<DateTime>(type: "datetime", nullable: true),
+                    FinalizationDate = table.Column<DateTime>(type: "datetime", nullable: true),
                     IdVehicle = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
@@ -90,12 +90,12 @@ namespace CarFix.Project.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ServiceDescription = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ServiceDescription = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Observations = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: true),
-                    ServiceStatus = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: false),
+                    ServiceStatus = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true),
                     IdUser = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IdServiceType = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdServiceType = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdBudget = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
@@ -113,13 +113,12 @@ namespace CarFix.Project.Migrations
                         column: x => x.IdServiceType,
                         principalTable: "ServiceTypes",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Services_Users_IdUser",
                         column: x => x.IdUser,
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(

@@ -7,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace CarFix.Project.Controllers
 {
-    [Route("api/[controller]")]
+    [Produces("application/json")]
+    [Route("v1/user")]
     [ApiController]
     public class UsersController : ControllerBase
     {

@@ -7,28 +7,17 @@ namespace CarFix.Project.Domains
 {
     public class Vehicle : Entity
     {
-        public Vehicle(string licensePlate, string modelName, string brandName, int year, string color, string vehicleImage, Guid idUser)
-        {
-            LicensePlate = licensePlate;
-            ModelName = modelName;
-            BrandName = brandName;
-            Year = year;
-            Color = color;
-            VehicleImage = vehicleImage;
-            IdUser = idUser;
-        }
-
-        public string LicensePlate { get; private set; }
-        public string ModelName { get; private set; }
-        public string BrandName { get; private set; }
-        public int Year { get; private set; }
-        public string Color { get; private set; }
-        public string? VehicleImage { get; private set; }
+        public string LicensePlate { get; set; }
+        public string ModelName { get; set; }
+        public string BrandName { get; set; }
+        public int Year { get; set; }
+        public string Color { get; set; }
+        public string? VehicleImage { get; set; }
 
         // Compositions
-        public Guid? IdUser { get; private set; }
-        public virtual User? User { get; private set; }
+        public Guid? IdUser { get; set; }
+        public virtual User? User { get; set; }
 
-        public virtual Budget? Budget { get; private set; }
+        public virtual Budget? Budget { get; set; }
     }
 }
