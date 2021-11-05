@@ -47,10 +47,11 @@ namespace CarFix.Project.Controllers
                     return NotFound("E-mail inválido!");
                 }
 
-                if(!Password.Validate(login.Password, userLogin.Password))
-                {
-                    return NotFound("Senha inválida!");
-                }
+                #warning Deve ser descomentado para testar api!
+                //if(!Password.Validate(login.Password, userLogin.Password))
+                //{
+                //    return NotFound("Senha inválida!");
+                //}
 
                 var claims = new[]
                 {

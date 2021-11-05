@@ -30,14 +30,22 @@ namespace CarFix.Project.Repositories
 
         public User FindUser(Guid idUser)
         {
-            return c_Context.Users.FirstOrDefault(x => x.Id == idUser);
+            User? userSearch = c_Context.Users.FirstOrDefault(x => x.Id == idUser);
+
+            if(userSearch != null){
+
+                return userSearch;
+
+            }
+
+            return null;
         }
 
         public User FindUserPerEmail(string email)
         {
-            User userLogin = c_Context.Users.FirstOrDefault(x => x.Email.ToLower() == email.ToLower());
+            User? userLogin = c_Context.Users.FirstOrDefault(x => x.Email.ToLower() == email.ToLower());
 
-            if(userLogin.Email != null)
+            if(userLogin != null)
             {
                 return userLogin;
             }
