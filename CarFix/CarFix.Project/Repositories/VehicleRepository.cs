@@ -28,7 +28,14 @@ namespace CarFix.Project.Repositories
 
         public Vehicle FindVehicle(Guid idVehicle)
         {
-            return c_Context.Vehicles.FirstOrDefault(x => x.Id == idVehicle);
+            Vehicle? searchVehicle = c_Context.Vehicles.FirstOrDefault(x => x.Id == idVehicle);
+
+            if(searchVehicle != null)
+            {
+                return searchVehicle;
+            }
+
+            return null;
         }
 
         public List<Vehicle> ListAllVehicles()
