@@ -11,7 +11,7 @@ namespace CarFix.Project.Interfaces
         List<Service> ListAllServices();
         Service FindService(Guid idService);
         void AnswerService(Guid idService, double price, string observations);
-        void Register(Service newService);
+        void RegisterService(Service newService);
         void Update(Guid idService, Service updatedService);
         void Delete(Guid idService);
     }
