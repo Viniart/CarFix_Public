@@ -1,5 +1,6 @@
 ﻿using CarFix.Project.Contexts;
 using CarFix.Project.Domains;
+using CarFix.Project.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -63,13 +64,12 @@ namespace CarFix.Project.Controllers
 
 
         [HttpPost]
-        public IActionResult RegisterService(Service newService)
+        public IActionResult RegisterService(ServiceBudgetsDTO newServiceBudget)
         {
 
             try
             {
-
-                _unitOfWork.ServiceRepository.RegisterService(newService);
+                _unitOfWork.ServiceRepository.RegisterService(newServiceBudget);
 
                 return StatusCode(204);
 

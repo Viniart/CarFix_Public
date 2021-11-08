@@ -1,5 +1,6 @@
 ﻿using CarFix.Project.Contexts;
 using CarFix.Project.Domains;
+using CarFix.Project.DTO;
 using CarFix.Project.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -50,9 +51,19 @@ namespace CarFix.Project.Repositories
                 .ToList();
         }
 
-        public void RegisterService(Service newService)
+        public void RegisterService(ServiceBudgetsDTO newServiceBudget)
         {
+            Service newService = new Service();
+            Budget newBudget = new Budget();
+
+            newService.ServiceDescription = newServiceBudget.ServiceDescription;
+            newService.IdServiceType = newServiceBudget.IdServiceType;
+            newService.IdBudget = newBudget.Id;
+
+            newBudget.IdVehicle = newServiceBudget.IdVehicle;
+
             c_Context.Services.Add(newService);
+            c_Context.Budgets.Add(newBudget);
 
             c_Context.SaveChanges();
         }

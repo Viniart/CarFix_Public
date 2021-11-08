@@ -1,4 +1,5 @@
 ﻿using CarFix.Project.Domains;
+using CarFix.Project.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace CarFix.Project.Interfaces
         List<Service> ListAllServices();
         Service? FindService(Guid idService);
         void AnswerService(Guid idService, double price, string observations);
-        void RegisterService(Service newService);
+        void RegisterService(ServiceBudgetsDTO newService);
         void Update(Service updatedService);
         void Delete(Guid idService);
     }

@@ -94,7 +94,7 @@ namespace CarFix.Project.Migrations
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
                     Observations = table.Column<string>(type: "varchar(200)", maxLength: 200, nullable: true),
                     ServiceStatus = table.Column<string>(type: "varchar(20)", maxLength: 20, nullable: true),
-                    IdUser = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IdUser = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdServiceType = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IdBudget = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime", nullable: false)

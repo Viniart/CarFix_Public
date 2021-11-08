@@ -154,8 +154,9 @@ namespace CarFix.Project.Contexts
                 .HasOne<User>(u => u.Worker)
                 .WithMany(b => b.Services)
                 .OnDelete(DeleteBehavior.NoAction)
+                .IsRequired(false) 
                 .HasForeignKey(f => f.IdUser);
-
+            #warning Atualizar banco com o is not required do usuário dentro de serviço
             #endregion
 
             #region ServiceImages

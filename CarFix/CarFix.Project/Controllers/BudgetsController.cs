@@ -41,7 +41,7 @@ namespace CarFix.Project.Controllers
             }
         }
 
-
+        [Route("active")]
         [HttpGet]
         public IActionResult GetActiveBudgets()
         {
@@ -58,25 +58,24 @@ namespace CarFix.Project.Controllers
             }
         }
 
+        //[Route("id")]
+        //[HttpGet("{id}")]
+        //public IActionResult GetBudgetById(Guid idBudget)
+        //{
+        //    try
+        //    {
 
-        [HttpGet("{id}")]
-        public IActionResult GetBudgetById(Guid idBudget)
-        {
-            try
-            {
+        //        return Ok(_unitOfWork.BudgetRepository.FindBudget(idBudget));
 
-                return Ok(_unitOfWork.BudgetRepository.FindBudget(idBudget));
+        //    }
 
-            }
+        //    catch (Exception error)
+        //    {
 
-            catch (Exception error)
-            {
+        //        return BadRequest(error);
 
-                return BadRequest(error);
-
-            }
-        }
-
+        //    }
+        //}
 
         [HttpGet("{id}")]
         public IActionResult GetBudgetByVehicleId(Guid idVehicle)
@@ -117,7 +116,7 @@ namespace CarFix.Project.Controllers
             }
         }
 
-
+        [Route("register")]
         [HttpPost]
         public IActionResult RegisterBudget(Budget newBudget)
         {
@@ -158,7 +157,7 @@ namespace CarFix.Project.Controllers
             }
         }
 
-
+        [Route("answer")]
         [HttpPost]
         public IActionResult AnswerBudget(DateTime timeEstimate, double totalValue)  // fazer aqui
         {
