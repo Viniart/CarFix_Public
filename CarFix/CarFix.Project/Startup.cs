@@ -27,7 +27,7 @@ namespace CarFix.Project
         public void ConfigureServices(IServiceCollection services)
         {
             //var connectionString = ConfigurationManager.ConnectionStrings["LocalConnectionString"].ConnectionString;
-            services.AddDbContext<CarFixContext>(options => options.UseSqlServer("Data Source = dev22\\sqlexpress; Initial Catalog=CarFixLocal; user=admin; pwd=senai@132"));
+            services.AddDbContext<CarFixContext>(options => options.UseSqlServer("Data Source = g19-database.cl3us3tplwnh.us-east-1.rds.amazonaws.com; Initial Catalog=CarFix; user=admin; pwd=Senai-132"));
 
             services.AddControllers()
                 .AddNewtonsoftJson(options => 

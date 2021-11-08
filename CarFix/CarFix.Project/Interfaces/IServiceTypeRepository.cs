@@ -9,9 +9,9 @@ namespace CarFix.Project.Interfaces
     interface IServiceTypeRepository
     {
         List<ServiceType> ListAllTypes();
-        ServiceType FindServiceType(Guid idType);
+        ServiceType? FindServiceType(Guid idType);
         void Register(ServiceType newType);
-        void Update(Guid idServiceType, ServiceType updatedType);
+        void Update(ServiceType updatedType);
         void Delete(Guid idServiceType);
     }
 }

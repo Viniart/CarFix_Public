@@ -40,7 +40,7 @@ namespace CarFix.Project.Controllers
         {
             try
             {
-                User userLogin = _unitOfWork.UserRepository.FindUserPerEmail(login.Email);
+                User? userLogin = _unitOfWork.UserRepository.FindUserPerEmail(login.Email);
 
                 if(userLogin == null)
                 {

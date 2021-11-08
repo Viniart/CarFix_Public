@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarFix.Project.Migrations
 {
     [DbContext(typeof(CarFixContext))]
-    [Migration("20211105182856_Teste SENAI")]
-    partial class TesteSENAI
+    [Migration("20211108172602_Primeira Migration Nuvem")]
+    partial class PrimeiraMigrationNuvem
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -28,7 +28,7 @@ namespace CarFix.Project.Repositories
             c_Context.SaveChanges();
         }
 
-        public User FindUser(Guid idUser)
+        public User? FindUser(Guid idUser)
         {
             User? userSearch = c_Context.Users.FirstOrDefault(x => x.Id == idUser);
 
@@ -41,7 +41,7 @@ namespace CarFix.Project.Repositories
             return null;
         }
 
-        public User FindUserPerEmail(string email)
+        public User? FindUserPerEmail(string email)
         {
             User? userLogin = c_Context.Users.FirstOrDefault(x => x.Email.ToLower() == email.ToLower());
 

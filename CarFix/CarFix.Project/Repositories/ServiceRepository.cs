@@ -33,7 +33,7 @@ namespace CarFix.Project.Repositories
             c_Context.SaveChanges();
         }
 
-        public Service FindService(Guid idService)
+        public Service? FindService(Guid idService)
         {
             return c_Context.Services.FirstOrDefault(x => x.Id == idService);
         }

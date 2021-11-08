@@ -29,7 +29,7 @@ namespace CarFix.Project.Repositories
             c_Context.SaveChanges();
         }
 
-        public ServiceImage FindServiceImage(Guid idServiceImage)
+        public ServiceImage? FindServiceImage(Guid idServiceImage)
         {
            return c_Context.ServiceImages.FirstOrDefault(x => x.Id == idServiceImage);
         }
@@ -49,7 +49,7 @@ namespace CarFix.Project.Repositories
             c_Context.SaveChanges();
         }
 
-        public void Update(Guid idServiceImage, ServiceImage updatedServiceImage)
+        public void Update(ServiceImage updatedServiceImage)
         {
 
             c_Context.Entry(updatedServiceImage).State = EntityState.Modified;

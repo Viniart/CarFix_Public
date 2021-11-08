@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarFix.Project.Migrations
 {
-    public partial class TesteSENAI : Migration
+    public partial class PrimeiraMigrationNuvem : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

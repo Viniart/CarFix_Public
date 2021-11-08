@@ -18,7 +18,7 @@ namespace CarFix.Project.Repositories
             c_Context = _context;
         }
 
-        public void DeleteServiceType(Guid idServiceType)
+        public void Delete(Guid idServiceType)
         {
 
             ServiceType selectedServiceType = c_Context.ServiceTypes.Find(idServiceType);
@@ -30,15 +30,14 @@ namespace CarFix.Project.Repositories
 
         }
 
-        public ServiceType FindServiceType(Guid idServiceType)
+        public ServiceType? FindServiceType(Guid idServiceType)
         {
-
             return c_Context.ServiceTypes.FirstOrDefault(x => x.Id == idServiceType);
 
         }
 
         
-        public List<ServiceType> ListAllServiceTypes()
+        public List<ServiceType> ListAllTypes()
         {
 
             return c_Context.ServiceTypes
@@ -48,7 +47,7 @@ namespace CarFix.Project.Repositories
         }
 
         
-        public void RegisterServiceType(ServiceType newServiceType)
+        public void Register(ServiceType newServiceType)
         {
 
             c_Context.ServiceTypes.Add(newServiceType);
@@ -58,7 +57,7 @@ namespace CarFix.Project.Repositories
         }
 
         
-        public void UpdateServiceType(ServiceType updatedServiceType)
+        public void Update(ServiceType updatedServiceType)
         {
 
             c_Context.Entry(updatedServiceType).State = EntityState.Modified;

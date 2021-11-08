@@ -10,8 +10,8 @@ namespace CarFix.Project.Interfaces
     public interface IUserRepository
     {
         List<User> ListAllUsers();
-        User FindUser(Guid idUser);
-        User FindUserPerEmail(string email);
+        User? FindUser(Guid idUser);
+        User? FindUserPerEmail(string email);
         // User FindWorkers(EnUserType userType);
         void Register(User newUser);
         void Update(User user);

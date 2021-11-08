@@ -9,8 +9,8 @@ namespace CarFix.Project.Interfaces
     public interface IVehicleRepository
     {
         List<Vehicle> ListAllVehicles();
-        Vehicle FindVehiclePerLicensePlate(string licensePlate);
-        Vehicle FindVehicle(Guid idVehicle);
+        Vehicle? FindVehiclePerLicensePlate(string licensePlate);
+        Vehicle? FindVehicle(Guid idVehicle);
         void Register(Vehicle newVehicle);
         void Update(Vehicle vehicle);
         void Delete(Guid idUser);

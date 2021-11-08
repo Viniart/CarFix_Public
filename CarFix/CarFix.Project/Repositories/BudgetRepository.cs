@@ -36,12 +36,12 @@ namespace CarFix.Project.Repositories
         }
 
         
-        public Budget FindBudget(Guid idBudget)
+        public Budget? FindBudget(Guid idBudget)
         {
             return c_Context.Budgets.FirstOrDefault(x => x.Id == idBudget);
         }
 
-        public Budget FindBudgetByVehicle(Guid idVehicle)
+        public Budget? FindBudgetByVehicle(Guid idVehicle)
         {
             return c_Context.Budgets.FirstOrDefault(x => x.Id == idVehicle);
         }
@@ -71,7 +71,7 @@ namespace CarFix.Project.Repositories
         }
 
         
-        public void Update(Guid idBudget, Budget updatedBudget)
+        public void Update(Budget updatedBudget)
         {
             c_Context.Entry(updatedBudget).State = EntityState.Modified;
 

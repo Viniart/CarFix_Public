@@ -17,6 +17,7 @@ namespace CarFix.Project.Repositories
         {
             c_Context = _context;
         }
+
         public void Delete(Guid idVehicle)
         {
             Vehicle selectedVehicle = c_Context.Vehicles.Find(idVehicle);
@@ -26,7 +27,7 @@ namespace CarFix.Project.Repositories
             c_Context.SaveChanges();
         }
 
-        public Vehicle FindVehicle(Guid idVehicle)
+        public Vehicle? FindVehicle(Guid idVehicle)
         {
             Vehicle? searchVehicle = c_Context.Vehicles.FirstOrDefault(x => x.Id == idVehicle);
 
@@ -46,9 +47,16 @@ namespace CarFix.Project.Repositories
                 .ToList();
         }
 
-        public Vehicle FindVehiclePerLicensePlate(string licensePlate)
+        public Vehicle? FindVehiclePerLicensePlate(string licensePlate)
         {
-            return c_Context.Vehicles.FirstOrDefault(x => x.LicensePlate == licensePlate);
+            Vehicle? searchVehicle = c_Context.Vehicles.FirstOrDefault(x => x.LicensePlate == licensePlate);
+
+            if(searchVehicle != null)
+            {
+                return searchVehicle;
+            }
+
+            return null;
         }
 
         public void Register(Vehicle newVehicle)

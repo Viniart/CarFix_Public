@@ -10,11 +10,11 @@ namespace CarFix.Project.Interfaces
     {
         List<Budget> ListAllBudgets();
         List<Budget> ListActiveBudgets();
-        Budget FindBudget(Guid idBudget);
-        Budget FindBudgetByVehicle(Guid idVehicle);
+        Budget? FindBudget(Guid idBudget);
+        Budget? FindBudgetByVehicle(Guid idVehicle);
         void AnswerBudget(DateTime timeEstimate, double totalValue);
         void Register(Budget newBudget);
-        void Update(Guid idBudget, Budget updatedBudget);
+        void Update(Budget updatedBudget);
         void Delete(Guid idBudget);
     }
 }
