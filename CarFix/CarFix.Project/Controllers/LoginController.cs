@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 namespace CarFix.Project.Controllers
 {
     [Produces("application/json")]
-    [Route("v1/login")]
+    [Route("api/login")]
     [ApiController]
     public class LoginController : ControllerBase
     {

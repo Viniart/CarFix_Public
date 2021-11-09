@@ -123,7 +123,7 @@ namespace CarFix.Project.Controllers
         }
 
 
-
+        [Route("answer")]
         [HttpPost]
         public IActionResult AnswerService(Guid idService, double price, string observations)
         {
