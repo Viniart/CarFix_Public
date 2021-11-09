@@ -15,7 +15,7 @@ namespace CarFix.Project.Domains
         // Compositions
         public Guid IdVehicle { get; set; }
         public virtual Vehicle? Vehicle { get; set; }
-        public virtual Service? Service { get; set; }
+        public ICollection<Service>? Services { get; set; }
 
     }
 }

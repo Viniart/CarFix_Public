@@ -20,9 +20,27 @@ namespace CarFix.Project.Repositories
         }
 
 
-        public void AnswerService(Guid idService, double price, string observations)
+        public void AnswerService(AnswerServiceDTO serviceAnswer)
         {
-            
+            Service selectedService = c_Context.Services.Find(serviceAnswer.IdService);
+
+            if(serviceAnswer.Observations != null)
+            {
+                selectedService.Observations = serviceAnswer.Observations;
+            }
+
+            selectedService.Price = serviceAnswer.Price;
+
+            var idBudget = selectedService.IdBudget;
+            Budget selectedBudget = c_Context.Budgets.Find(idBudget);
+
+            if(selectedBudget.TotalValue == null)
+            {
+                selectedBudget.TotalValue = 0;
+            }
+            selectedBudget.TotalValue += selectedService.Price;
+
+            c_Context.SaveChanges();
         }
 
         public void Delete(Guid idService)
@@ -51,12 +69,15 @@ namespace CarFix.Project.Repositories
                 .ToList();
         }
 
-        public void RegisterService(ServiceBudgetsDTO newServiceBudget)
+        public void RegisterService(ServiceBudgetDTO newServiceBudget)
         {
-            Service newService = new Service();
-            Budget newBudget = new Budget();
+            Service newService = new();
+            Budget newBudget = new();
 
-            newService.ServiceDescription = newServiceBudget.ServiceDescription;
+            if(newServiceBudget.ServiceDescription != null)
+            {
+                newService.ServiceDescription = newServiceBudget.ServiceDescription;
+            }
             newService.IdServiceType = newServiceBudget.IdServiceType;
             newService.IdBudget = newBudget.Id;
 

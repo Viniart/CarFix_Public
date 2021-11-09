@@ -19,13 +19,7 @@ namespace CarFix.Project.Repositories
             c_Context = _context;
 
         }
-
-        public void AnswerBudget(DateTime timeEstimate, double totalValue)
-        {
-            throw new NotImplementedException();
-        }
-
-        
+                
         public void Delete(Guid idBudget)
         {
             Budget selectedBudget = c_Context.Budgets.Find(idBudget);
@@ -48,7 +42,13 @@ namespace CarFix.Project.Repositories
 
         public List<Budget> ListActiveBudgets()
         {
-            throw new NotImplementedException();
+            return c_Context.Budgets
+                .AsNoTracking()
+                .Include(x => x.IdVehicle)
+                .Include(x => x.Vehicle)
+                .Include(x => x.Services)
+                .Where(x => x.FinalizationDate == null)
+                .ToList();
         }
 
         
@@ -58,7 +58,7 @@ namespace CarFix.Project.Repositories
                 .AsNoTracking()
                 .Include(x => x.IdVehicle)
                 .Include(x => x.Vehicle)
-                .Include(x => x.Service)
+                .Include(x => x.Services)
                 .ToList();
         }
 

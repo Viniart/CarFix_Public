@@ -157,25 +157,5 @@ namespace CarFix.Project.Controllers
             }
         }
 
-        [Route("answer")]
-        [HttpPost]
-        public IActionResult AnswerBudget(DateTime timeEstimate, double totalValue)  // fazer aqui
-        {
-            try
-            {
-
-                _unitOfWork.BudgetRepository.AnswerBudget(timeEstimate, totalValue);
-
-                return StatusCode(201);
-
-            }
-
-            catch (Exception error)
-            {
-
-                return BadRequest(error);
-
-            }
-        }
     }
 }

@@ -11,12 +11,12 @@ namespace CarFix.Project.UnitOfWork
     {
         private readonly CarFixContext c_Context;
 
-        private UserRepository _userRepository;
-        private VehicleRepository _vehicleRepository;
-        private ServiceTypeRepository _serviceTypeRepository;
-        private ServiceRepository _serviceRepository;
-        private BudgetRepository _budgetRepository;
-        private ServiceImageRepository _serviceImageRepository;
+        private UserRepository? _userRepository;
+        private VehicleRepository? _vehicleRepository;
+        private ServiceTypeRepository? _serviceTypeRepository;
+        private ServiceRepository? _serviceRepository;
+        private BudgetRepository? _budgetRepository;
+        private ServiceImageRepository? _serviceImageRepository;
 
         public UnitOfWork(CarFixContext context)
         {

@@ -66,7 +66,7 @@ namespace CarFix.Project.Migrations
                     b.Property<Guid?>("IdServiceType")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("IdUser")
+                    b.Property<Guid?>("IdUser")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Observations")
@@ -87,8 +87,7 @@ namespace CarFix.Project.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdBudget")
-                        .IsUnique();
+                    b.HasIndex("IdBudget");
 
                     b.HasIndex("IdServiceType");
 
@@ -239,8 +238,8 @@ namespace CarFix.Project.Migrations
             modelBuilder.Entity("CarFix.Project.Domains.Service", b =>
                 {
                     b.HasOne("CarFix.Project.Domains.Budget", "Budget")
-                        .WithOne("Service")
-                        .HasForeignKey("CarFix.Project.Domains.Service", "IdBudget")
+                        .WithMany("Services")
+                        .HasForeignKey("IdBudget")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -251,8 +250,7 @@ namespace CarFix.Project.Migrations
                     b.HasOne("CarFix.Project.Domains.User", "Worker")
                         .WithMany("Services")
                         .HasForeignKey("IdUser")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Budget");
 
@@ -283,7 +281,7 @@ namespace CarFix.Project.Migrations
 
             modelBuilder.Entity("CarFix.Project.Domains.Budget", b =>
                 {
-                    b.Navigation("Service");
+                    b.Navigation("Services");
                 });
 
             modelBuilder.Entity("CarFix.Project.Domains.Service", b =>

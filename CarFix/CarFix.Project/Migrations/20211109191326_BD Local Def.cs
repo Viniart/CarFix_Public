@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarFix.Project.Migrations
 {
-    public partial class PrimeiraMigrationNuvem : Migration
+    public partial class BDLocalDef : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -155,8 +155,7 @@ namespace CarFix.Project.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Services_IdBudget",
                 table: "Services",
-                column: "IdBudget",
-                unique: true);
+                column: "IdBudget");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Services_IdServiceType",

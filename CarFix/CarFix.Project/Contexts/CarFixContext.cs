@@ -1,9 +1,5 @@
 ﻿using CarFix.Project.Domains;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CarFix.Project.Contexts
 {
@@ -147,8 +143,8 @@ namespace CarFix.Project.Contexts
 
             modelBuilder.Entity<Service>()
                 .HasOne<Budget>(u => u.Budget)
-                .WithOne(b => b.Service)
-                .HasForeignKey<Service>(f => f.IdBudget);
+                .WithMany(b => b.Services)
+                .HasForeignKey(f => f.IdBudget);
 
             modelBuilder.Entity<Service>()
                 .HasOne<User>(u => u.Worker)
@@ -156,7 +152,6 @@ namespace CarFix.Project.Contexts
                 .OnDelete(DeleteBehavior.NoAction)
                 .IsRequired(false) 
                 .HasForeignKey(f => f.IdUser);
-            #warning Atualizar banco com o is not required do usuário dentro de serviço
             #endregion
 
             #region ServiceImages

@@ -64,7 +64,7 @@ namespace CarFix.Project.Controllers
 
 
         [HttpPost]
-        public IActionResult RegisterService(ServiceBudgetsDTO newServiceBudget)
+        public IActionResult RegisterService(ServiceBudgetDTO newServiceBudget)
         {
 
             try
@@ -125,13 +125,13 @@ namespace CarFix.Project.Controllers
 
         [Route("answer")]
         [HttpPost]
-        public IActionResult AnswerService(Guid idService, double price, string observations)
+        public IActionResult AnswerService(AnswerServiceDTO serviceAnswer)
         {
 
             try
             {
 
-                _unitOfWork.ServiceRepository.AnswerService(idService, price, observations);
+                _unitOfWork.ServiceRepository.AnswerService(serviceAnswer);
 
                 return StatusCode(201);
 

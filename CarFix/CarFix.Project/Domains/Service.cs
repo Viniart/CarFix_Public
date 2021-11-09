@@ -14,7 +14,7 @@ namespace CarFix.Project.Domains
         public EnServiceStatus? ServiceStatus { get; set; }
 
         // Compositions
-        public Guid IdUser { get; set; }
+        public Guid? IdUser { get; set; }
         public virtual User? Worker { get; set; }
         
         public Guid? IdServiceType { get; set; }

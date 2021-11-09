@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CarFix.Project.DTO
 {
-    public class ServiceBudgetsDTO : Entity
+    public class ServiceBudgetDTO : Entity
     {
-        // Cuidado com a entity criand Ids iguais para o budget e o serviço
+        // Cuidado com a entity criando Ids iguais para o budget e o serviço
         public Guid IdServiceType { get; set; }
         public Guid IdVehicle { get; set; }
         public string? ServiceDescription { get; set; }
