@@ -9,6 +9,6 @@ namespace CarFix.Project.Domains
     {
         public string TypeName { get; set; }
 
-        public ICollection<Service> Services { get; set; }
+        public ICollection<Service>? Services { get; set; }
     }
 }

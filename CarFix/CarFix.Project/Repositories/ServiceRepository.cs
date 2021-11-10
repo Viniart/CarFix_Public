@@ -19,7 +19,6 @@ namespace CarFix.Project.Repositories
             c_Context = _context;
         }
 
-
         public void AnswerService(AnswerServiceDTO serviceAnswer)
         {
             Service selectedService = c_Context.Services.Find(serviceAnswer.IdService);
@@ -72,19 +71,29 @@ namespace CarFix.Project.Repositories
         public void RegisterService(ServiceBudgetDTO newServiceBudget)
         {
             Service newService = new();
-            Budget newBudget = new();
+            if(newServiceBudget.IdBudget == null)
+            {
+                Budget newBudget = new();
+                newService.IdBudget = newBudget.Id;
+
+                newBudget.IdVehicle = newServiceBudget.IdVehicle;
+
+                c_Context.Budgets.Add(newBudget);
+            }
+            else
+            {
+                Budget selectedBudget = c_Context.Budgets.Find(newServiceBudget.IdBudget);
+
+                newService.IdBudget = selectedBudget.Id;
+            }
 
             if(newServiceBudget.ServiceDescription != null)
             {
                 newService.ServiceDescription = newServiceBudget.ServiceDescription;
             }
             newService.IdServiceType = newServiceBudget.IdServiceType;
-            newService.IdBudget = newBudget.Id;
-
-            newBudget.IdVehicle = newServiceBudget.IdVehicle;
 
             c_Context.Services.Add(newService);
-            c_Context.Budgets.Add(newBudget);
 
             c_Context.SaveChanges();
         }

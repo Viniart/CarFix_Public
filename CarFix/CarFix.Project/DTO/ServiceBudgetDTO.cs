@@ -11,6 +11,7 @@ namespace CarFix.Project.DTO
         // Cuidado com a entity criando Ids iguais para o budget e o serviço
         public Guid IdServiceType { get; set; }
         public Guid IdVehicle { get; set; }
+        public Guid? IdBudget { get; set; }
         public string? ServiceDescription { get; set; }
     }
 }

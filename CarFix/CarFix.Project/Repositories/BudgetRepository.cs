@@ -28,7 +28,6 @@ namespace CarFix.Project.Repositories
 
             c_Context.SaveChanges();
         }
-
         
         public Budget? FindBudget(Guid idBudget)
         {
@@ -44,24 +43,20 @@ namespace CarFix.Project.Repositories
         {
             return c_Context.Budgets
                 .AsNoTracking()
-                .Include(x => x.IdVehicle)
                 .Include(x => x.Vehicle)
                 .Include(x => x.Services)
                 .Where(x => x.FinalizationDate == null)
                 .ToList();
         }
-
         
         public List<Budget> ListAllBudgets()
         {
             return c_Context.Budgets
                 .AsNoTracking()
-                .Include(x => x.IdVehicle)
                 .Include(x => x.Vehicle)
                 .Include(x => x.Services)
                 .ToList();
         }
-
         
         public void Register(Budget newBudget)
         {
@@ -69,7 +64,6 @@ namespace CarFix.Project.Repositories
 
             c_Context.SaveChanges();
         }
-
         
         public void Update(Budget updatedBudget)
         {
