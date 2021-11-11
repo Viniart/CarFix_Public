@@ -17,19 +17,30 @@ namespace CarFix.Project.Utils
             {
                 var folderName = Path.Combine("Images");
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-
-                if (file.Length > 0)
+                var fileExtension = Path.GetExtension(file.FileName);
+                
+                if(fileExtension == ".jpg" || fileExtension == ".jpeg" || fileExtension == ".jfif" 
+                || fileExtension == ".png" || fileExtension == ".svg")
                 {
-                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    var fullPath = Path.Combine(pathToSave, fileName);
-
-                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    if (file.Length > 0)
                     {
-                        file.CopyTo(stream);
+                        var fileName = new string(Path.GetFileNameWithoutExtension(file.FileName).ToArray()).Replace(' ', '-');
+                        fileName = fileName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(file.FileName);
+
+                        var extension = Path.GetExtension(file.FileName);
+                        var fullPath = Path.Combine(pathToSave, fileName);
+
+                        using (var stream = new FileStream(fullPath, FileMode.Create))
+                        {
+                            file.CopyTo(stream);
+                        }
+
+                        return fileName;
                     }
-
-                    return fileName;
-
+                    else
+                    {
+                        return "";
+                    }
                 }
                 else
                 {

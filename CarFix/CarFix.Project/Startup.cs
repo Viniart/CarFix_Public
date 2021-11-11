@@ -53,14 +53,14 @@ namespace CarFix.Project
                     };
                 });
 
-            services.AddCors(options =>
-            {
-                options.AddPolicy("CorsPolicy",
-                    builder => builder  .AllowAnyOrigin()
-                                        .AllowAnyMethod()
-                                        .AllowAnyHeader()
-                    );
-            });
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("CorsPolicy",
+            //        builder => builder  .AllowAnyOrigin()
+            //                            .AllowAnyMethod()
+            //                            .AllowAnyHeader()
+            //        );
+            //});
 
             services.AddSwaggerGen(c =>
             {
@@ -94,12 +94,14 @@ namespace CarFix.Project
 
             app.UseAuthentication();
 
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), "Images")),
-                RequestPath = "/Images"
-            });
+            app.UseStaticFiles();
+
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //        "/var/www/html/images/"),
+            //    RequestPath = "/images"
+            //});
 
             app.UseEndpoints(endpoints =>
             {

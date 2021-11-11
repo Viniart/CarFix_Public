@@ -1,5 +1,6 @@
 ﻿using CarFix.Project.Contexts;
 using CarFix.Project.Domains;
+using CarFix.Project.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -59,17 +60,29 @@ namespace CarFix.Project.Controllers
 
         }
 
-
-        [HttpPost]
-        public IActionResult RegisterServiceImage(ServiceImage newServiceImage)
+        [HttpPost, DisableRequestSizeLimit]
+        public IActionResult RegisterServiceImage([FromForm]ServiceImage newServiceImageForm)
         {
 
             try
             {
+                Upload up = new();
 
-                _unitOfWork.ServiceImageRepository.Register(newServiceImage);
+                string[] imagens = new string[Request.Form.Files.Count];
 
-                return StatusCode(204);
+                for (int i = 0; i < Request.Form.Files.Count; i++)
+                {
+                    var imagem = up.UploadFile(Request.Form.Files[i]);
+                    imagens[i] = imagem;
+
+                    ServiceImage newServiceImage = new();
+
+                    newServiceImage.IdService = newServiceImageForm.IdService;
+                    newServiceImage.ImagePath = imagem;
+                    _unitOfWork.ServiceImageRepository.Register(newServiceImage);
+                }
+
+                return Ok(imagens);
 
             }
 
@@ -119,5 +132,6 @@ namespace CarFix.Project.Controllers
                 return BadRequest(error);
             }
         }
+
     }
 }

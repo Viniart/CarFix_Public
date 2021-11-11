@@ -30,11 +30,6 @@ namespace CarFix.Project.Controllers
             _unitOfWork = new UnitOfWork.UnitOfWork(_context);
         }
 
-        //public LoginController(UnitOfWork.UnitOfWork unitOfWork)
-        //{
-        //    _unitOfWork = unitOfWork;
-        //}
-
         [HttpPost]
         public IActionResult Login(LoginViewModel login)
         {
@@ -47,7 +42,6 @@ namespace CarFix.Project.Controllers
                     return NotFound("E-mail inválido!");
                 }
 
-                #warning Deve ser descomentado para testar api!
                 if(!Password.Validate(login.Password, userLogin.Password))
                 {
                     return NotFound("Senha inválida!");

@@ -4,6 +4,10 @@
     <TargetFramework>net5.0</TargetFramework>
 	<Nullable>enable</Nullable>
   </PropertyGroup>
+	
+  <ItemGroup>
+    <None Remove="Images\transferir212038525.jfif" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Core" Version="1.6.0" />
     <PackageReference Include="Flunt" Version="2.0.5" />
