@@ -6,11 +6,12 @@ using CarFix.Project.Contexts;
 using CarFix.Project.Domains;
 using CarFix.Project.Interfaces;
 using CarFix.Project.Utils;
+using Flunt.Notifications;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarFix.Project.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : Notifiable<Notification>, IUserRepository
     {
         private readonly CarFixContext c_Context;
 

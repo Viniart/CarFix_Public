@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace CarFix.Project.Controllers
 {
     [Produces("application/json")]
-    [Route("api/User")]
+    [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
     {
@@ -72,7 +72,10 @@ namespace CarFix.Project.Controllers
         {
             try
             {
-
+                if(string.IsNullOrEmpty(newUser.Email) || string.IsNullOrEmpty(newUser.Password) || string.IsNullOrEmpty(newUser.Username))
+                {
+                    return BadRequest("Usuário Inválido!");
+                }
                 _unitOfWork.UserRepository.Register(newUser);
 
                 return StatusCode(201);

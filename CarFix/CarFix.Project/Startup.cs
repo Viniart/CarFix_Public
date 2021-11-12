@@ -98,13 +98,6 @@ namespace CarFix.Project
 
             app.UseStaticFiles();
 
-            //app.UseStaticFiles(new StaticFileOptions
-            //{
-            //    FileProvider = new PhysicalFileProvider(
-            //        "/var/www/html/images/"),
-            //    RequestPath = "/images"
-            //});
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

@@ -6,10 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Flunt.Notifications;
 
 namespace CarFix.Project.Repositories
 {
-    public class VehicleRepository : IVehicleRepository
+    public class VehicleRepository : Notifiable<Notification> ,IVehicleRepository
     {
         private readonly CarFixContext c_Context;
 
