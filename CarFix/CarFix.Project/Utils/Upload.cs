@@ -39,12 +39,12 @@ namespace CarFix.Project.Utils
                     }
                     else
                     {
-                        return "";
+                        return "Invalid File";
                     }
                 }
                 else
                 {
-                    return "";
+                    return "Invalid File Type";
                 }
 
             }
@@ -55,5 +55,29 @@ namespace CarFix.Project.Utils
 
 
         }
+
+        public string DeleteFile(string fileName)
+        {
+            try
+            {
+                var folderName = Path.Combine("Images");
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+                if (File.Exists(Path.Combine(filePath, fileName)))
+                {
+                    File.Delete(Path.Combine(filePath, fileName));
+                    return fileName + " Deleted";
+                }
+                else
+                {
+                    return "File not Found";
+                }
+            }
+            catch (Exception ex)
+            {
+                return ex.ToString();
+            }
+        }
+
     }
 }

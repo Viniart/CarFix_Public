@@ -120,6 +120,14 @@ namespace CarFix.Project.Controllers
 
             try
             {
+                Upload up = new();
+
+                ServiceImage? selectedImage = _unitOfWork.ServiceImageRepository.FindServiceImage(id);
+                if(selectedImage != null)
+                {
+                    var fileName = selectedImage.ImagePath;
+                    up.DeleteFile(fileName);
+                }
 
                 _unitOfWork.ServiceImageRepository.Delete(id);
 

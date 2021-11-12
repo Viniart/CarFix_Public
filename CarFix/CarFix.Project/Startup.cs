@@ -53,14 +53,14 @@ namespace CarFix.Project
                     };
                 });
 
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("CorsPolicy",
-            //        builder => builder  .AllowAnyOrigin()
-            //                            .AllowAnyMethod()
-            //                            .AllowAnyHeader()
-            //        );
-            //});
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder  .AllowAnyOrigin()
+                                        .AllowAnyMethod()
+                                        .AllowAnyHeader()
+                   );
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -82,6 +82,8 @@ namespace CarFix.Project
             }
 
             app.UseSwagger();
+
+            app.UseCors("CorsPolicy");
 
             app.UseSwaggerUI(c => {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
