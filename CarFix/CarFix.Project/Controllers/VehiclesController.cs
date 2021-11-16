@@ -91,6 +91,7 @@ namespace CarFix.Project.Controllers
             {
 
                 _unitOfWork.VehicleRepository.Update(vehicleUpdated);
+                _unitOfWork.Save();
 
                 return StatusCode(204);
 
@@ -112,6 +113,7 @@ namespace CarFix.Project.Controllers
             try
             {
                 _unitOfWork.VehicleRepository.Delete(id);
+                _unitOfWork.Save();
 
                 return StatusCode(204);
             }
@@ -132,6 +134,7 @@ namespace CarFix.Project.Controllers
             {
 
                 _unitOfWork.VehicleRepository.Register(newVehicle);
+                _unitOfWork.Save();
 
                 return StatusCode(201);
 

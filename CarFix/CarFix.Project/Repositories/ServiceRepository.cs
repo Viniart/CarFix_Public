@@ -38,8 +38,6 @@ namespace CarFix.Project.Repositories
                 selectedBudget.TotalValue = 0;
             }
             selectedBudget.TotalValue += selectedService.Price;
-
-            c_Context.SaveChanges();
         }
 
         public void Delete(Guid idService)
@@ -47,8 +45,6 @@ namespace CarFix.Project.Repositories
             Service selectedService = c_Context.Services.Find(idService);
 
             c_Context.Services.Remove(selectedService);
-
-            c_Context.SaveChanges();
         }
 
         public Service? FindService(Guid idService)
@@ -94,15 +90,11 @@ namespace CarFix.Project.Repositories
             newService.IdServiceType = newServiceBudget.IdServiceType;
 
             c_Context.Services.Add(newService);
-
-            c_Context.SaveChanges();
         }
 
         public void Update(Service updatedService)
         {
             c_Context.Entry(updatedService).State = EntityState.Modified;
-
-            c_Context.SaveChanges();
         }
     
     }

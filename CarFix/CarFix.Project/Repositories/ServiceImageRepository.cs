@@ -25,8 +25,6 @@ namespace CarFix.Project.Repositories
             ServiceImage selectedServiceImage = c_Context.ServiceImages.Find(idServiceImage);
 
             c_Context.ServiceImages.Remove(selectedServiceImage);
-
-            c_Context.SaveChanges();
         }
 
         public ServiceImage? FindServiceImage(Guid idServiceImage)
@@ -45,16 +43,12 @@ namespace CarFix.Project.Repositories
         public void Register(ServiceImage newServiceImage)
         {
             c_Context.ServiceImages.Add(newServiceImage);
-
-            c_Context.SaveChanges();
         }
 
         public void Update(ServiceImage updatedServiceImage)
         {
 
             c_Context.Entry(updatedServiceImage).State = EntityState.Modified;
-
-            c_Context.SaveChanges();
 
         }
     

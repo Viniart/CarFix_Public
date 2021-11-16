@@ -80,6 +80,7 @@ namespace CarFix.Project.Controllers
                     newServiceImage.IdService = newServiceImageForm.IdService;
                     newServiceImage.ImagePath = imagem;
                     _unitOfWork.ServiceImageRepository.Register(newServiceImage);
+                    _unitOfWork.Save();
                 }
 
                 return Ok(imagens);
@@ -101,6 +102,7 @@ namespace CarFix.Project.Controllers
             {
 
                 _unitOfWork.ServiceImageRepository.Update(updatedServiceImage);
+                _unitOfWork.Save();
 
                 return StatusCode(204);
 
@@ -130,6 +132,7 @@ namespace CarFix.Project.Controllers
                 }
 
                 _unitOfWork.ServiceImageRepository.Delete(id);
+                _unitOfWork.Save();
 
                 return StatusCode(204);
 

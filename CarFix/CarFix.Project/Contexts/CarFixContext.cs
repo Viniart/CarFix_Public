@@ -159,8 +159,8 @@ namespace CarFix.Project.Contexts
 
             modelBuilder.Entity<ServiceImage>().Property(x => x.Id);
 
-            modelBuilder.Entity<ServiceImage>().Property(x => x.ImagePath).HasMaxLength(50);
-            modelBuilder.Entity<ServiceImage>().Property(x => x.ImagePath).HasColumnType("varchar(50)");
+            modelBuilder.Entity<ServiceImage>().Property(x => x.ImagePath).HasMaxLength(255);
+            modelBuilder.Entity<ServiceImage>().Property(x => x.ImagePath).HasColumnType("varchar(255)");
             modelBuilder.Entity<ServiceImage>().Property(x => x.ImagePath).IsRequired();
 
             modelBuilder.Entity<ServiceImage>().Property(x => x.CreationDate).HasColumnType("datetime");

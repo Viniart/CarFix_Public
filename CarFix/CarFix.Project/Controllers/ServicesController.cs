@@ -70,6 +70,7 @@ namespace CarFix.Project.Controllers
             try
             {
                 _unitOfWork.ServiceRepository.RegisterService(newServiceBudget);
+                _unitOfWork.Save();
 
                 return StatusCode(204);
 
@@ -90,6 +91,7 @@ namespace CarFix.Project.Controllers
             {
 
                 _unitOfWork.ServiceRepository.Update(updatedService);
+                _unitOfWork.Save();
 
                 return StatusCode(204);
 
@@ -111,6 +113,7 @@ namespace CarFix.Project.Controllers
             {
 
                 _unitOfWork.ServiceRepository.Delete(id);
+                _unitOfWork.Save();
 
                 return StatusCode(204);
 
@@ -132,6 +135,7 @@ namespace CarFix.Project.Controllers
             {
 
                 _unitOfWork.ServiceRepository.AnswerService(serviceAnswer);
+                _unitOfWork.Save();
 
                 return StatusCode(201);
 

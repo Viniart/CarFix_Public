@@ -25,8 +25,6 @@ namespace CarFix.Project.Repositories
             Budget selectedBudget = c_Context.Budgets.Find(idBudget);
 
             c_Context.Budgets.Remove(selectedBudget);
-
-            c_Context.SaveChanges();
         }
         
         public Budget? FindBudget(Guid idBudget)
@@ -61,15 +59,11 @@ namespace CarFix.Project.Repositories
         public void Register(Budget newBudget)
         {
             c_Context.Budgets.Add(newBudget);
-
-            c_Context.SaveChanges();
         }
         
         public void Update(Budget updatedBudget)
         {
             c_Context.Entry(updatedBudget).State = EntityState.Modified;
-
-            c_Context.SaveChanges();
         }
     
     }

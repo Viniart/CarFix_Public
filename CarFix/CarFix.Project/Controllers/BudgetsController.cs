@@ -103,6 +103,7 @@ namespace CarFix.Project.Controllers
             {
 
                 _unitOfWork.BudgetRepository.Update(updatedBudget);
+                _unitOfWork.Save();
 
                 return StatusCode(204);
 
@@ -124,6 +125,7 @@ namespace CarFix.Project.Controllers
             {
 
                 _unitOfWork.BudgetRepository.Register(newBudget);
+                _unitOfWork.Save();
 
                 return StatusCode(201);
 
@@ -144,6 +146,7 @@ namespace CarFix.Project.Controllers
             {
 
                 _unitOfWork.BudgetRepository.Delete(idBudget);
+                _unitOfWork.Save();
 
                 return StatusCode(204);
 

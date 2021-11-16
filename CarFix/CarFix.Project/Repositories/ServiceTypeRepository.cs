@@ -25,8 +25,6 @@ namespace CarFix.Project.Repositories
 
             c_Context.ServiceTypes.Remove(selectedServiceType);
 
-            c_Context.SaveChanges();
-
 
         }
 
@@ -52,8 +50,6 @@ namespace CarFix.Project.Repositories
 
             c_Context.ServiceTypes.Add(newServiceType);
 
-            c_Context.SaveChanges();
-
         }
 
         
@@ -61,8 +57,6 @@ namespace CarFix.Project.Repositories
         {
 
             c_Context.Entry(updatedServiceType).State = EntityState.Modified;
-
-            c_Context.SaveChanges();
 
 
         }

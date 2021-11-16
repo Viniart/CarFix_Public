@@ -77,6 +77,7 @@ namespace CarFix.Project.Controllers
                     return BadRequest("Usuário Inválido!");
                 }
                 _unitOfWork.UserRepository.Register(newUser);
+                _unitOfWork.Save();
 
                 return StatusCode(201);
 
@@ -98,7 +99,7 @@ namespace CarFix.Project.Controllers
             {
 
                 _unitOfWork.UserRepository.Update(userUpdated);
-
+                _unitOfWork.Save();
                 return StatusCode(204);
 
             }
@@ -117,7 +118,7 @@ namespace CarFix.Project.Controllers
             try
             {
                 _unitOfWork.UserRepository.Delete(id);
-
+                _unitOfWork.Save();
                 return StatusCode(204);
             }
 

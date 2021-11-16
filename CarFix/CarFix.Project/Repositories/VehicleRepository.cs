@@ -24,8 +24,6 @@ namespace CarFix.Project.Repositories
             Vehicle selectedVehicle = c_Context.Vehicles.Find(idVehicle);
 
             c_Context.Vehicles.Remove(selectedVehicle);
-
-            c_Context.SaveChanges();
         }
 
         public Vehicle? FindVehicle(Guid idVehicle)
@@ -63,13 +61,11 @@ namespace CarFix.Project.Repositories
         public void Register(Vehicle newVehicle)
         {
             c_Context.Vehicles.Add(newVehicle);
-            c_Context.SaveChanges();
         }
 
         public void Update(Vehicle vehicle)
         {
             c_Context.Entry(vehicle).State = EntityState.Modified;
-            c_Context.SaveChanges();
         }
     }
 }

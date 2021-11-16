@@ -25,8 +25,6 @@ namespace CarFix.Project.Repositories
             User selectedUser = c_Context.Users.Find(idUser);
 
             c_Context.Users.Remove(selectedUser);
-
-            c_Context.SaveChanges();
         }
 
         public User? FindUser(Guid idUser)
@@ -68,13 +66,11 @@ namespace CarFix.Project.Repositories
         {
             newUser.Password = Password.Encrypt(newUser.Password);
             c_Context.Users.Add(newUser);
-            c_Context.SaveChanges();
         }
 
         public void Update(User user)
         {
             c_Context.Entry(user).State = EntityState.Modified;
-            c_Context.SaveChanges();
         }
     }
 }
