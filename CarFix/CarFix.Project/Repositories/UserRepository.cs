@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CarFix.Project.Repositories
 {
-    public class UserRepository : Notifiable<Notification>, IUserRepository
+    public class UserRepository : IUserRepository
     {
         private readonly CarFixContext c_Context;
 

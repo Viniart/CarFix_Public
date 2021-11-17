@@ -12,7 +12,6 @@ namespace CarFix.Project.Utils
     {
         public string UploadFile(IFormFile file)
         {
-
             try
             {
                 var folderName = Path.Combine("Images");

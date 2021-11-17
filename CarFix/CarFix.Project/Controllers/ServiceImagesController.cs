@@ -1,5 +1,6 @@
 ﻿using CarFix.Project.Contexts;
 using CarFix.Project.Domains;
+using CarFix.Project.DTO;
 using CarFix.Project.Utils;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -61,7 +62,7 @@ namespace CarFix.Project.Controllers
         }
 
         [HttpPost, DisableRequestSizeLimit]
-        public IActionResult RegisterServiceImage([FromForm]ServiceImage newServiceImageForm)
+        public IActionResult RegisterServiceImage([FromForm]InsertImageDTO newServiceImageForm)
         {
 
             try
@@ -75,12 +76,19 @@ namespace CarFix.Project.Controllers
                     var imagem = up.UploadFile(Request.Form.Files[i]);
                     imagens[i] = imagem;
 
-                    ServiceImage newServiceImage = new();
+                    if(!imagens[i].Equals("Invalid File Type"))
+                    {
+                        ServiceImage newServiceImage = new();
 
-                    newServiceImage.IdService = newServiceImageForm.IdService;
-                    newServiceImage.ImagePath = imagem;
-                    _unitOfWork.ServiceImageRepository.Register(newServiceImage);
-                    _unitOfWork.Save();
+                        newServiceImage.IdService = newServiceImageForm.IdService;
+                        newServiceImage.ImagePath = imagem;
+                        _unitOfWork.ServiceImageRepository.Register(newServiceImage);
+                        _unitOfWork.Save();
+                    }
+                    else
+                    {
+                        return BadRequest("Arquivo Inválido");
+                    }
                 }
 
                 return Ok(imagens);

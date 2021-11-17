@@ -10,7 +10,7 @@ using Flunt.Notifications;
 
 namespace CarFix.Project.Repositories
 {
-    public class VehicleRepository : Notifiable<Notification> ,IVehicleRepository
+    public class VehicleRepository : IVehicleRepository
     {
         private readonly CarFixContext c_Context;
 
