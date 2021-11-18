@@ -11,6 +11,7 @@ namespace CarFix.Project.Interfaces
     {
         List<Service> ListAllServices();
         Service? FindService(Guid idService);
+        List<Service> FindServicePerUser(Guid idUser);
         void AnswerService(AnswerServiceDTO serviceAnswer);
         void RegisterService(ServiceBudgetDTO newService);
         void Update(Service updatedService);

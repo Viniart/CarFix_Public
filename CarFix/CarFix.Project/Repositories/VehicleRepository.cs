@@ -46,13 +46,17 @@ namespace CarFix.Project.Repositories
                 .ToList();
         }
 
-        public Vehicle? FindVehiclePerLicensePlate(string licensePlate)
+        public List<Vehicle>? FindVehiclePerUser(Guid idUser)
         {
-            Vehicle? searchVehicle = c_Context.Vehicles.FirstOrDefault(x => x.LicensePlate == licensePlate);
+            List<Vehicle>? vehicles = c_Context.Vehicles
+                .AsNoTracking()
+                .Include(x => x.User)
+                .Where(x => x.IdUser == idUser)
+                .ToList();
 
-            if(searchVehicle != null)
+            if(vehicles != null)
             {
-                return searchVehicle;
+                return vehicles;
             }
 
             return null;

@@ -10,6 +10,7 @@ namespace CarFix.Project.Interfaces
     {
         List<Budget> ListAllBudgets();
         List<Budget> ListActiveBudgets();
+        List<Budget> FindBudgetsPerUser(Guid idUser);
         Budget? FindBudget(Guid idBudget);
         Budget? FindBudgetByVehicle(Guid idVehicle);
         void Register(Budget newBudget);

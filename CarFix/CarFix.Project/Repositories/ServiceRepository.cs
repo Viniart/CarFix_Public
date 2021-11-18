@@ -64,6 +64,25 @@ namespace CarFix.Project.Repositories
                 .ToList();
         }
 
+        public List<Service> FindServicePerUser(Guid idUser)
+        {
+            List<Service>? services = c_Context.Services
+                   .AsNoTracking()
+                   .Include(x => x.Budget)
+                   .Include(x => x.ServiceType)
+                   .Include(x => x.Worker)
+                   .Include(x => x.ServiceImages)
+                   .Where(x => x.Budget.Vehicle.IdUser == idUser)
+                   .ToList();
+
+            if (services != null)
+            {
+                return services;
+            }
+
+            return null;
+        }
+
         public void RegisterService(ServiceBudgetDTO newServiceBudget)
         {
             Service newService = new();
@@ -96,7 +115,7 @@ namespace CarFix.Project.Repositories
         {
             c_Context.Entry(updatedService).State = EntityState.Modified;
         }
-    
+
     }
 
 }

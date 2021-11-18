@@ -41,9 +41,8 @@ namespace CarFix.Project.Controllers
 
         }
 
-
-        [HttpGet("{id}")]
-        public IActionResult GetVehicleById(Guid id)
+        [HttpGet("VehicleId/{id}")]
+        public IActionResult FindVehiclePerId(Guid id)
         {
             try
             {
@@ -62,17 +61,17 @@ namespace CarFix.Project.Controllers
 
         }
 
-        [Route("/plate")]
-        [HttpGet]
-        public IActionResult GetVehicleByLicensePlate(string licensePlate)
+        [HttpGet("User/{id}")]
+        public IActionResult GetVehiclePerUser(Guid id)
         {
-
             try
             {
 
-                return Ok(_unitOfWork.VehicleRepository.FindVehiclePerLicensePlate(licensePlate));
+                return Ok(_unitOfWork.VehicleRepository.FindVehiclePerUser(id));
 
             }
+
+
             catch (Exception error)
             {
 
@@ -81,8 +80,7 @@ namespace CarFix.Project.Controllers
             }
 
         }
-
-
+                
         [HttpPut]
         public IActionResult UpdateVehicle(Vehicle vehicleUpdated)
         {

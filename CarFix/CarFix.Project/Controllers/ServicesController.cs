@@ -1,12 +1,8 @@
 ﻿using CarFix.Project.Contexts;
 using CarFix.Project.Domains;
 using CarFix.Project.DTO;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CarFix.Project.Controllers
 {
@@ -26,8 +22,8 @@ namespace CarFix.Project.Controllers
 
         }
 
-        [HttpGet("{id}")]
-        public IActionResult GetServiceById(Guid id)
+        [HttpGet("ServiceId/{id}")]
+        public IActionResult FindServicePerId(Guid id)
         {
             try
             {
@@ -44,7 +40,24 @@ namespace CarFix.Project.Controllers
             }
         }
 
+        [HttpGet("User/{id}")]
+        public IActionResult GetServicePerUser(Guid id)
+        {
+            try
+            {
 
+                return Ok(_unitOfWork.ServiceRepository.FindServicePerUser(id));
+
+            }
+
+            catch (Exception error)
+            {
+
+                return BadRequest(error);
+
+            }
+        }
+               
         [HttpGet]
         public IActionResult GetAllServices()
         {
@@ -126,7 +139,7 @@ namespace CarFix.Project.Controllers
         }
 
 
-        [Route("answer")]
+        [Route("Answer")]
         [HttpPost]
         public IActionResult AnswerService(AnswerServiceDTO serviceAnswer)
         {

@@ -1,11 +1,7 @@
 ﻿using CarFix.Project.Contexts;
 using CarFix.Project.Domains;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CarFix.Project.Controllers
 {
@@ -41,7 +37,7 @@ namespace CarFix.Project.Controllers
             }
         }
 
-        [Route("active")]
+        [Route("Active")]
         [HttpGet]
         public IActionResult GetActiveBudgets()
         {
@@ -58,32 +54,49 @@ namespace CarFix.Project.Controllers
             }
         }
 
-        //[Route("id")]
-        //[HttpGet("{id}")]
-        //public IActionResult GetBudgetById(Guid idBudget)
-        //{
-        //    try
-        //    {
+        [HttpGet("BudgetId/{id}")]
+        public IActionResult GetBudgetById(Guid idBudget)
+        {
+            try
+            {
 
-        //        return Ok(_unitOfWork.BudgetRepository.FindBudget(idBudget));
+                return Ok(_unitOfWork.BudgetRepository.FindBudget(idBudget));
 
-        //    }
+            }
 
-        //    catch (Exception error)
-        //    {
+            catch (Exception error)
+            {
 
-        //        return BadRequest(error);
+                return BadRequest(error);
 
-        //    }
-        //}
+            }
+        }
 
-        [HttpGet("{id}")]
+        [HttpGet("Vehicle/{id}")]
         public IActionResult GetBudgetByVehicleId(Guid idVehicle)
         {
             try
             {
 
                 return Ok(_unitOfWork.BudgetRepository.FindBudgetByVehicle(idVehicle));
+
+            }
+
+            catch (Exception error)
+            {
+
+                return BadRequest(error);
+
+            }
+        }
+
+        [HttpGet("User/{id}")]
+        public IActionResult GetBudgetPerUser(Guid id)
+        {
+            try
+            {
+
+                return Ok(_unitOfWork.BudgetRepository.FindBudgetsPerUser(id));
 
             }
 
@@ -117,7 +130,6 @@ namespace CarFix.Project.Controllers
             }
         }
 
-        [Route("register")]
         [HttpPost]
         public IActionResult RegisterBudget(Budget newBudget)
         {

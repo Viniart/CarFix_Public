@@ -46,6 +46,23 @@ namespace CarFix.Project.Repositories
                 .Where(x => x.FinalizationDate == null)
                 .ToList();
         }
+
+        public List<Budget>? FindBudgetsPerUser(Guid idUser)
+        {
+            List<Budget>? budgets = c_Context.Budgets
+                .AsNoTracking()
+                .Include(x => x.Vehicle)
+                .Include(x => x.Services)
+                .Where(x => x.Vehicle.IdUser == idUser)
+                .ToList();
+
+            if (budgets != null)
+            {
+                return budgets;
+            }
+
+            return null;
+        }
         
         public List<Budget> ListAllBudgets()
         {
@@ -55,7 +72,7 @@ namespace CarFix.Project.Repositories
                 .Include(x => x.Services)
                 .ToList();
         }
-        
+
         public void Register(Budget newBudget)
         {
             c_Context.Budgets.Add(newBudget);
