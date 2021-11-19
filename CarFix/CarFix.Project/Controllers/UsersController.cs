@@ -1,5 +1,6 @@
 ﻿using CarFix.Project.Contexts;
 using CarFix.Project.Domains;
+using CarFix.Project.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -68,19 +69,30 @@ namespace CarFix.Project.Controllers
         }
 
         [HttpPost]
-        public IActionResult RegisterUser(User newUser)
+        public IActionResult RegisterUser(InsertUserDTO newUserDTO)
         {
             try
             {
-                if(string.IsNullOrEmpty(newUser.Email) || string.IsNullOrEmpty(newUser.Password) || string.IsNullOrEmpty(newUser.Username))
+                if(string.IsNullOrEmpty(newUserDTO.Email) || string.IsNullOrEmpty(newUserDTO.Password) || string.IsNullOrEmpty(newUserDTO.Username))
                 {
                     return BadRequest("Usuário Inválido!");
                 }
-                _unitOfWork.UserRepository.Register(newUser);
-                _unitOfWork.Save();
+                if(_unitOfWork.UserRepository.FindUserPerEmail(newUserDTO.Email) == null)
+                {
+                    User newUser = new();
 
-                return StatusCode(201);
+                    newUser.Email = newUserDTO.Email;
+                    newUser.Password = newUserDTO.Password;
+                    newUser.UserType = newUserDTO.UserType;
+                    newUser.Username = newUserDTO.Username;
+                    newUser.PhoneNumber = newUserDTO.PhoneNumber;
 
+                    _unitOfWork.UserRepository.Register(newUser);
+                    _unitOfWork.Save();
+
+                    return StatusCode(201);
+                }
+                return BadRequest("Email já cadastrado!");
             }
             catch (Exception error)
             {

@@ -1,5 +1,6 @@
 ﻿using CarFix.Project.Contexts;
 using CarFix.Project.Domains;
+using CarFix.Project.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -125,11 +126,20 @@ namespace CarFix.Project.Controllers
 
 
         [HttpPost]
-        public IActionResult RegisterVehicle(Vehicle newVehicle)
+        public IActionResult RegisterVehicle(InsertVehicleDTO newVehicleDTO)
         {
 
             try
             {
+                Vehicle newVehicle = new();
+
+                newVehicle.LicensePlate = newVehicleDTO.LicensePlate;
+                newVehicle.ModelName = newVehicleDTO.ModelName;
+                newVehicle.BrandName = newVehicleDTO.BrandName;
+                newVehicle.Year = newVehicleDTO.Year;
+                newVehicle.Color = newVehicleDTO.Color;
+                newVehicle.VehicleImage = newVehicleDTO.VehicleImage;
+                newVehicle.IdUser = newVehicleDTO.IdUser;
 
                 _unitOfWork.VehicleRepository.Register(newVehicle);
                 _unitOfWork.Save();

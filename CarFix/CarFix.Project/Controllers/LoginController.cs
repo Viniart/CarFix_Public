@@ -37,14 +37,9 @@ namespace CarFix.Project.Controllers
             {
                 User? userLogin = _unitOfWork.UserRepository.FindUserPerEmail(login.Email);
 
-                if(userLogin == null)
+                if(userLogin == null || !Password.Validate(login.Password, userLogin.Password))
                 {
-                    return NotFound("E-mail inválido!");
-                }
-
-                if(!Password.Validate(login.Password, userLogin.Password))
-                {
-                    return NotFound("Senha inválida!");
+                    return BadRequest("E-mail ou senha inválida!");
                 }
 
                 var claims = new[]
