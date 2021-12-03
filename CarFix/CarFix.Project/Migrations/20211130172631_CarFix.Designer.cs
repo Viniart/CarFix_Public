@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarFix.Project.Migrations
 {
     [DbContext(typeof(CarFixContext))]
-    [Migration("20211116180524_Mudanca tamanho de imagem")]
-    partial class Mudancatamanhodeimagem
+    [Migration("20211130172631_CarFix")]
+    partial class CarFix
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

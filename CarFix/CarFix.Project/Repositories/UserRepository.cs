@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using CarFix.Project.Contexts;
 using CarFix.Project.Domains;
 using CarFix.Project.Interfaces;
 using CarFix.Project.Utils;
-using Flunt.Notifications;
 using Microsoft.EntityFrameworkCore;
 
 namespace CarFix.Project.Repositories
@@ -62,6 +60,16 @@ namespace CarFix.Project.Repositories
                 .ToList();
         }
 
+        public List<User> ListAllWorkers()
+        {
+            return c_Context.Users
+                .AsNoTracking()
+                .Include(x => x.Vehicles)
+                .Include(x => x.Services)
+                .Where(x => x.UserType == Enum.EnUserType.Funileiro)
+                .ToList();
+        }
+
         public void Register(User newUser)
         {
             newUser.Password = Password.Encrypt(newUser.Password);
@@ -71,6 +79,8 @@ namespace CarFix.Project.Repositories
         public void Update(User user)
         {
             c_Context.Entry(user).State = EntityState.Modified;
+            user.Password = Password.Encrypt(user.Password);
         }
+    
     }
 }

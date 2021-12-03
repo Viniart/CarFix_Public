@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CarFix.Project.Migrations
 {
-    public partial class BDLocalDef : Migration
+    public partial class CarFix : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -126,7 +126,7 @@ namespace CarFix.Project.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ImagePath = table.Column<string>(type: "varchar(50)", maxLength: 50, nullable: false),
+                    ImagePath = table.Column<string>(type: "varchar(255)", maxLength: 255, nullable: false),
                     IdService = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreationDate = table.Column<DateTime>(type: "datetime", nullable: false)
                 },

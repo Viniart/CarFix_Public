@@ -40,13 +40,14 @@ namespace CarFix.Project.Controllers
             }
         }
 
-        [HttpGet("User/{id}")]
-        public IActionResult GetServicePerUser(Guid id)
+
+        [HttpGet("Budget/{id}")]
+        public IActionResult GetServicesPerBudget(Guid id)
         {
             try
             {
 
-                return Ok(_unitOfWork.ServiceRepository.FindServicePerUser(id));
+                return Ok(_unitOfWork.ServiceRepository.FindServicesPerBudget(id));
 
             }
 
@@ -57,22 +58,52 @@ namespace CarFix.Project.Controllers
 
             }
         }
-               
+
+        
+        [HttpGet("Vehicle/{id}")]
+        public IActionResult GetServicesPerVehicle(Guid id)
+        {
+            try
+            {
+
+                return Ok(_unitOfWork.ServiceRepository.FindServicesPerVehicle(id));
+
+            }
+
+            catch (Exception error)
+            {
+
+                return BadRequest(error);
+
+            }
+        }
+
         [HttpGet]
         public IActionResult GetAllServices()
         {
             try
             {
-
                 return Ok(_unitOfWork.ServiceRepository.ListAllServices());
-
             }
 
             catch (Exception error)
             {
                 return BadRequest(error);
             }
+        }
 
+        [Route("Worker/{id}")]
+        [HttpGet]
+        public IActionResult GetAllServicesPerWorker(Guid id)
+        {
+            try
+            {
+                return Ok(_unitOfWork.ServiceRepository.ListAllActiveServicesPerWorker(id));
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
         }
 
 
@@ -85,7 +116,7 @@ namespace CarFix.Project.Controllers
                 _unitOfWork.ServiceRepository.RegisterService(newServiceBudget);
                 _unitOfWork.Save();
 
-                return StatusCode(204);
+                return StatusCode(201);
 
             }
 
@@ -97,7 +128,7 @@ namespace CarFix.Project.Controllers
         }
 
 
-        [HttpPut]
+        [HttpPatch]
         public IActionResult UpdateService(Service updatedService)
         {
             try
@@ -138,6 +169,43 @@ namespace CarFix.Project.Controllers
             }
         }
 
+        [Route("AssignWorker")]
+        [HttpPost]
+        public IActionResult AssignWorker(AssignWorkerDTO worker)
+        {
+            try
+            {
+                _unitOfWork.ServiceRepository.AssignWorker(worker);
+                _unitOfWork.Save();
+
+                return StatusCode(201);
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
+
+        [Route("ServiceStatus")]
+        [HttpPatch]
+        public IActionResult ServiceStatus(ChangeServiceStatusDTO serviceStatus)
+        {
+
+            try
+            {
+
+                _unitOfWork.ServiceRepository.ChangeServiceStatus(serviceStatus);
+                _unitOfWork.Save();
+
+                return StatusCode(201);
+
+            }
+
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
 
         [Route("Answer")]
         [HttpPost]

@@ -10,6 +10,7 @@ namespace CarFix.Project.Domains
         public Entity()
         {
             Id = Guid.NewGuid();
+            
             CreationDate = DateTime.Now;
         }
 

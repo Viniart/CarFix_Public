@@ -10,6 +10,7 @@ namespace CarFix.Project.Interfaces
     {
         List<ServiceImage> ListAllImages();
         ServiceImage? FindServiceImage(Guid idServiceImage);
+        List<ServiceImage>? FindImagesPerService(Guid idService);
         void Register(ServiceImage newServiceImage);
         void Update(ServiceImage updatedServiceImage);
         void Delete(Guid idServiceImage);

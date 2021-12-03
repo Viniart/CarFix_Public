@@ -34,7 +34,10 @@ namespace CarFix.Project.Repositories
 
         public Budget? FindBudgetByVehicle(Guid idVehicle)
         {
-            return c_Context.Budgets.FirstOrDefault(x => x.Id == idVehicle);
+            return c_Context.Budgets
+                .Include(x => x.Vehicle)
+                .Include(x => x.Services)
+                .FirstOrDefault(x => x.IdVehicle == idVehicle);
         }
 
         public List<Budget> ListActiveBudgets()

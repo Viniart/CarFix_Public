@@ -55,12 +55,12 @@ namespace CarFix.Project.Controllers
         }
 
         [HttpGet("BudgetId/{id}")]
-        public IActionResult GetBudgetById(Guid idBudget)
+        public IActionResult GetBudgetById(Guid id)
         {
             try
             {
 
-                return Ok(_unitOfWork.BudgetRepository.FindBudget(idBudget));
+                return Ok(_unitOfWork.BudgetRepository.FindBudget(id));
 
             }
 
@@ -73,12 +73,12 @@ namespace CarFix.Project.Controllers
         }
 
         [HttpGet("Vehicle/{id}")]
-        public IActionResult GetBudgetByVehicleId(Guid idVehicle)
+        public IActionResult GetBudgetByVehicleId(Guid id)
         {
             try
             {
 
-                return Ok(_unitOfWork.BudgetRepository.FindBudgetByVehicle(idVehicle));
+                return Ok(_unitOfWork.BudgetRepository.FindBudgetByVehicle(id));
 
             }
 
@@ -109,7 +109,7 @@ namespace CarFix.Project.Controllers
         }
 
 
-        [HttpPut]
+        [HttpPatch]
         public IActionResult UpdateBudget(Budget updatedBudget)
         {
             try
@@ -129,6 +129,7 @@ namespace CarFix.Project.Controllers
 
             }
         }
+
 
         [HttpPost]
         public IActionResult RegisterBudget(Budget newBudget)
@@ -151,6 +152,7 @@ namespace CarFix.Project.Controllers
             }
         }
 
+
         [HttpDelete("{id}")]
         public IActionResult DeleteBudget(Guid idBudget)
         {
@@ -172,5 +174,7 @@ namespace CarFix.Project.Controllers
             }
         }
 
+
     }
+
 }

@@ -27,6 +27,23 @@ namespace CarFix.Project.Repositories
             c_Context.ServiceImages.Remove(selectedServiceImage);
         }
 
+        public List<ServiceImage>? FindImagesPerService(Guid idService)
+        {
+            List<ServiceImage>? images = c_Context.ServiceImages
+                 .AsNoTracking()
+                 .Include(x => x.Service)
+                 .Where(x => x.IdService == idService)
+                 .ToList();
+
+            if (images != null)
+            {
+                return images;
+            }
+
+            return null;
+
+        }
+
         public ServiceImage? FindServiceImage(Guid idServiceImage)
         {
            return c_Context.ServiceImages.FirstOrDefault(x => x.Id == idServiceImage);

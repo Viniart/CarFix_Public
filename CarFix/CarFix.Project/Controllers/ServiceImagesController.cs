@@ -43,7 +43,27 @@ namespace CarFix.Project.Controllers
             }
         }
 
+        
+        [HttpGet("Service/{id}")]
+        public IActionResult GetImagesByService(Guid id)
+        {
+            try
+            {
 
+                return Ok(_unitOfWork.ServiceImageRepository.FindImagesPerService(id));
+
+            }
+
+            catch (Exception error)
+            {
+
+                return BadRequest(error);
+
+            }
+        }
+
+
+        
         [HttpGet]
         public IActionResult GetAllServiceImages()
         {
@@ -103,7 +123,7 @@ namespace CarFix.Project.Controllers
         }
 
 
-        [HttpPut]
+        [HttpPatch]
         public IActionResult UpdateServiceImage(ServiceImage updatedServiceImage)
         {
             try
@@ -150,7 +170,9 @@ namespace CarFix.Project.Controllers
             {
                 return BadRequest(error);
             }
+        
         }
 
     }
+
 }

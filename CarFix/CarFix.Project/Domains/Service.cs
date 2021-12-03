@@ -16,7 +16,7 @@ namespace CarFix.Project.Domains
         // Compositions
         public Guid? IdUser { get; set; }
         public virtual User? Worker { get; set; }
-        
+
         public Guid? IdServiceType { get; set; }
         public virtual ServiceType? ServiceType { get; set; }
 
@@ -24,5 +24,7 @@ namespace CarFix.Project.Domains
         public virtual Budget? Budget { get; set; }
 
         public ICollection<ServiceImage>? ServiceImages { get; set; }
+
     }
+
 }

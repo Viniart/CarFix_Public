@@ -30,21 +30,30 @@ namespace CarFix.Project.Controllers
         [HttpGet]
         public IActionResult GetAllUsers()
         {
-
             try
             {
-
                 return Ok(_unitOfWork.UserRepository.ListAllUsers());
-
             }
 
             catch (Exception error)
             {
-
                 return BadRequest(error);
+            }
+        }
 
+        [Route("Workers")]
+        [HttpGet]
+        public IActionResult ListAllWorkers()
+        {
+            try
+            {
+                return Ok(_unitOfWork.UserRepository.ListAllWorkers());
             }
 
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
         }
 
 
@@ -77,22 +86,25 @@ namespace CarFix.Project.Controllers
                 {
                     return BadRequest("Usuário Inválido!");
                 }
+                
                 if(_unitOfWork.UserRepository.FindUserPerEmail(newUserDTO.Email) == null)
                 {
                     User newUser = new();
 
-                    newUser.Email = newUserDTO.Email;
-                    newUser.Password = newUserDTO.Password;
+                    newUser.Email = newUserDTO.Email.ToString();
+                    newUser.Password = newUserDTO.Password.ToString();
                     newUser.UserType = newUserDTO.UserType;
-                    newUser.Username = newUserDTO.Username;
-                    newUser.PhoneNumber = newUserDTO.PhoneNumber;
+                    newUser.Username = newUserDTO.Username.ToString();
+                    newUser.PhoneNumber = newUserDTO.PhoneNumber.ToString();  // mudei para .ToString() pelo mobile
 
                     _unitOfWork.UserRepository.Register(newUser);
                     _unitOfWork.Save();
 
                     return StatusCode(201);
                 }
+                
                 return BadRequest("Email já cadastrado!");
+            
             }
             catch (Exception error)
             {
@@ -104,7 +116,7 @@ namespace CarFix.Project.Controllers
         }
 
 
-        [HttpPut]
+        [HttpPatch]
         public IActionResult UpdateUser(User userUpdated)
         {
             try

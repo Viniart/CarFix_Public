@@ -72,7 +72,7 @@ namespace CarFix.Project.Controllers
                 _unitOfWork.ServiceTypeRepository.Register(newServiceType);
                 _unitOfWork.Save();
 
-                return StatusCode(204);
+                return StatusCode(201);
 
             }
 
@@ -84,7 +84,7 @@ namespace CarFix.Project.Controllers
         }
 
 
-        [HttpPut]
+        [HttpPatch]  //Patch ou Put aqui?
         public IActionResult UpdateServiceType(ServiceType updatedServiceType)
         {
             try

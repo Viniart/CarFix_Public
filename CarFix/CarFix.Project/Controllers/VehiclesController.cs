@@ -82,7 +82,7 @@ namespace CarFix.Project.Controllers
 
         }
                 
-        [HttpPut]
+        [HttpPatch]  // Put ou Patch?
         public IActionResult UpdateVehicle(Vehicle vehicleUpdated)
         {
 
@@ -152,6 +152,9 @@ namespace CarFix.Project.Controllers
             {
                 return BadRequest(error);
             }
+        
         }
+    
     }
+
 }

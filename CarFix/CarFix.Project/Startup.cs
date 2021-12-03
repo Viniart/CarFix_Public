@@ -1,8 +1,10 @@
+using CarFix.Project.Connection;
 using CarFix.Project.Contexts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +20,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace CarFix.Project
 {
@@ -25,9 +28,11 @@ namespace CarFix.Project
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            var config = new HttpConfiguration();
+            config.Filters.Add(new RequireHttpsAttribute());
             //var connectionString = ConfigurationManager.ConnectionStrings["LocalConnectionString"].ConnectionString;
             services.AddDbContext<CarFixContext>(options => options.UseSqlServer("Data Source = g19-database.cl3us3tplwnh.us-east-1.rds.amazonaws.com; Initial Catalog=CarFix; user=admin; pwd=Senai-132"));
-            //services.AddDbContext<CarFixContext>(options => options.UseSqlServer("Data Source = DEV22\\SQLEXPRESS; Initial Catalog=CarFixDef; user=sa; pwd=sa@132"));
+            //services.AddDbContext<CarFixContext>(options => options.UseSqlServer("Data Source = DESKTOP-7SJR3UU\\SQLEXPRESS; Initial Catalog=CarFix; Integrated Security=true"));
 
             services.AddControllers()
                 .AddNewtonsoftJson(options => 
@@ -51,6 +56,7 @@ namespace CarFix.Project
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ChaveSecretaCarFixProjectSenai"))
                     };
                 });
+
 
             services.AddCors(options =>
             {
@@ -104,6 +110,7 @@ namespace CarFix.Project
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseHttpsRedirection();
 
             app.UseSwagger();
 
@@ -118,7 +125,11 @@ namespace CarFix.Project
 
             app.UseAuthentication();
 
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Images")),
+                RequestPath = "/Images"
+            });
 
             app.UseEndpoints(endpoints =>
             {
