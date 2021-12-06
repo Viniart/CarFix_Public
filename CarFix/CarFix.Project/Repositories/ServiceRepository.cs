@@ -163,26 +163,6 @@ namespace CarFix.Project.Repositories
 
             return null;
         }
-
-        public List<Service> FindServicesPerVehicle(Guid idVehicle)
-        {
-            List<Service>? services = c_Context.Services
-                   .AsNoTracking()
-                   .Include(x => x.Budget)
-                   .Include(x => x.ServiceType)
-                   .Include(x => x.Worker)
-                   .Include(x => x.ServiceImages)
-                   .Where(x => x.Budget.IdVehicle == idVehicle)
-                   .ToList();
-
-            if (services != null)
-            {
-                return services;
-            }
-
-            return null;
-        }
-
     
     }
 

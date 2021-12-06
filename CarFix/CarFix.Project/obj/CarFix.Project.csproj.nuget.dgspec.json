@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\37529671880\\Desktop\\CarFix_Completo\\CarFix_App\\BackEnd\\CarFix.Project\\CarFix.Project.csproj": {}
+    "C:\\Users\\Desktop\\Desktop\\Codação\\CarFixNovo\\CarFix\\BackEnd\\CarFix.Project\\CarFix.Project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\37529671880\\Desktop\\CarFix_Completo\\CarFix_App\\BackEnd\\CarFix.Project\\CarFix.Project.csproj": {
+    "C:\\Users\\Desktop\\Desktop\\Codação\\CarFixNovo\\CarFix\\BackEnd\\CarFix.Project\\CarFix.Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\37529671880\\Desktop\\CarFix_Completo\\CarFix_App\\BackEnd\\CarFix.Project\\CarFix.Project.csproj",
+        "projectUniqueName": "C:\\Users\\Desktop\\Desktop\\Codação\\CarFixNovo\\CarFix\\BackEnd\\CarFix.Project\\CarFix.Project.csproj",
         "projectName": "CarFix.Project",
-        "projectPath": "C:\\Users\\37529671880\\Desktop\\CarFix_Completo\\CarFix_App\\BackEnd\\CarFix.Project\\CarFix.Project.csproj",
-        "packagesPath": "C:\\Users\\37529671880\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\37529671880\\Desktop\\CarFix_Completo\\CarFix_App\\BackEnd\\CarFix.Project\\obj\\",
+        "projectPath": "C:\\Users\\Desktop\\Desktop\\Codação\\CarFixNovo\\CarFix\\BackEnd\\CarFix.Project\\CarFix.Project.csproj",
+        "packagesPath": "C:\\Users\\Desktop\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Desktop\\Desktop\\Codação\\CarFixNovo\\CarFix\\BackEnd\\CarFix.Project\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\37529671880\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Desktop\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -110,12 +107,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[5.0.12, 5.0.12]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -124,7 +115,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -13,7 +13,6 @@ namespace CarFix.Project.Interfaces
         List<Service> ListAllServices();
         Service? FindService(Guid idService);
         List<Service> FindServicesPerBudget(Guid idBudget);
-        List<Service> FindServicesPerVehicle(Guid idVehicle);
         List<Service> ListAllActiveServicesPerWorker(Guid idWorker);
         void AssignWorker(AssignWorkerDTO worker);
         void AnswerService(AnswerServiceDTO serviceAnswer);

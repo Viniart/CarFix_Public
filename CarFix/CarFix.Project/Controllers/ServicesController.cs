@@ -59,25 +59,6 @@ namespace CarFix.Project.Controllers
             }
         }
 
-        
-        [HttpGet("Vehicle/{id}")]
-        public IActionResult GetServicesPerVehicle(Guid id)
-        {
-            try
-            {
-
-                return Ok(_unitOfWork.ServiceRepository.FindServicesPerVehicle(id));
-
-            }
-
-            catch (Exception error)
-            {
-
-                return BadRequest(error);
-
-            }
-        }
-
         [HttpGet]
         public IActionResult GetAllServices()
         {
