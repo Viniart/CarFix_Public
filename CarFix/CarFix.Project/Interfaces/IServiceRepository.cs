@@ -14,6 +14,7 @@ namespace CarFix.Project.Interfaces
         Service? FindService(Guid idService);
         List<Service> FindServicesPerBudget(Guid idBudget);
         List<Service> ListAllActiveServicesPerWorker(Guid idWorker);
+        public List<Service> FindServicesPerVehicle(Guid idVehicle);
         void AssignWorker(AssignWorkerDTO worker);
         void AnswerService(AnswerServiceDTO serviceAnswer);
         void ChangeServiceStatus(ChangeServiceStatusDTO serviceStatus);
