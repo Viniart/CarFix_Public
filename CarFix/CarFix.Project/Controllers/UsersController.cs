@@ -1,10 +1,12 @@
 ﻿using CarFix.Project.Contexts;
 using CarFix.Project.Domains;
 using CarFix.Project.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -115,13 +117,15 @@ namespace CarFix.Project.Controllers
 
         }
 
-
         [HttpPatch]
-        public IActionResult UpdateUser(User userUpdated)
+        public IActionResult UpdateUser(UpdateUserDTO userUpdated)
         {
             try
             {
+                string idJti = User.Claims.First(t => t.Type == JwtRegisteredClaimNames.Jti).Value;
+                Guid idFinal = Guid.Parse(idJti);
 
+                userUpdated.UserId = idFinal;
                 _unitOfWork.UserRepository.Update(userUpdated);
                 _unitOfWork.Save();
                 return StatusCode(204);
