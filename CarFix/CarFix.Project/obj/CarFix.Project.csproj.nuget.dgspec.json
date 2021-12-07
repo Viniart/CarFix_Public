@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Desktop\\Desktop\\Codação\\CarFixNovo\\CarFix\\BackEnd\\CarFix.Project\\CarFix.Project.csproj": {}
+    "C:\\Users\\Desktop\\Desktop\\a\\CarFix_Public\\CarFix\\CarFix.Project\\CarFix.Project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Desktop\\Desktop\\Codação\\CarFixNovo\\CarFix\\BackEnd\\CarFix.Project\\CarFix.Project.csproj": {
+    "C:\\Users\\Desktop\\Desktop\\a\\CarFix_Public\\CarFix\\CarFix.Project\\CarFix.Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Desktop\\Desktop\\Codação\\CarFixNovo\\CarFix\\BackEnd\\CarFix.Project\\CarFix.Project.csproj",
+        "projectUniqueName": "C:\\Users\\Desktop\\Desktop\\a\\CarFix_Public\\CarFix\\CarFix.Project\\CarFix.Project.csproj",
         "projectName": "CarFix.Project",
-        "projectPath": "C:\\Users\\Desktop\\Desktop\\Codação\\CarFixNovo\\CarFix\\BackEnd\\CarFix.Project\\CarFix.Project.csproj",
+        "projectPath": "C:\\Users\\Desktop\\Desktop\\a\\CarFix_Public\\CarFix\\CarFix.Project\\CarFix.Project.csproj",
         "packagesPath": "C:\\Users\\Desktop\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Desktop\\Desktop\\Codação\\CarFixNovo\\CarFix\\BackEnd\\CarFix.Project\\obj\\",
+        "outputPath": "C:\\Users\\Desktop\\Desktop\\a\\CarFix_Public\\CarFix\\CarFix.Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Desktop\\AppData\\Roaming\\NuGet\\NuGet.Config",

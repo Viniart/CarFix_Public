@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "C8XNKXT6Jkqhxsh1qC5yGg1+CpAMr1Zvn5A97fPZAm4WgDT7dcTbOdlV0VgxsdHOoQyRb5iIADOf4DMI9SNMFQ==",
+  "dgSpecHash": "V5cM1YPOPVScO7YQCMa9EI5oAUcxaCvVm5hBtmVHK9WaLlPM77e3Tq82E58+2E1LRRr1cc0RD51SjJLaNNXypQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Desktop\\Desktop\\Codação\\CarFixNovo\\CarFix\\BackEnd\\CarFix.Project\\CarFix.Project.csproj",
+  "projectFilePath": "C:\\Users\\Desktop\\Desktop\\a\\CarFix_Public\\CarFix\\CarFix.Project\\CarFix.Project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Desktop\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\Desktop\\.nuget\\packages\\flunt\\2.0.5\\flunt.2.0.5.nupkg.sha512",
